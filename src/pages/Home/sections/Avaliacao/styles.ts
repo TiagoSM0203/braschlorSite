@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../../../styles";
-import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+import { revealStyles, type RevealMotionProps } from "../../scrollRevealStyles";
 
 export const AvaliacaoSection = styled.div`
     background: #2A47B1;

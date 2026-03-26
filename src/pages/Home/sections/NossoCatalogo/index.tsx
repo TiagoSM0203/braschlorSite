@@ -59,33 +59,39 @@ const NossoCatalogo = () => (
   <CatalogoSection>
     <Container>
       <ScrollReveal>
-        <CatalogoTitle>
-          <h1>Nosso Catalogo</h1>
-          <p>
-            Escolha uma categoria e veja os produtos ideais para sua rotina ou
-            para revender.
-          </p>
-        </CatalogoTitle>
+        {({ revealProps, revealRef }) => (
+          <CatalogoTitle ref={revealRef} {...revealProps}>
+            <h1>Nosso Catalogo</h1>
+            <p>
+              Escolha uma categoria e veja os produtos ideais para sua rotina ou
+              para revender.
+            </p>
+          </CatalogoTitle>
+        )}
       </ScrollReveal>
 
       <CatalogoCards>
         {catalogoItems.map(({ image, alt, title, description }, index) => (
           <a href="#" key={title}>
             <ScrollReveal delay={index * 90}>
-              <CatalogoCard>
-                <img src={image} alt={alt} />
-                <h2>{title}</h2>
-                <p>{description}</p>
-              </CatalogoCard>
+              {({ revealProps, revealRef }) => (
+                <CatalogoCard ref={revealRef} {...revealProps}>
+                  <img src={image} alt={alt} />
+                  <h2>{title}</h2>
+                  <p>{description}</p>
+                </CatalogoCard>
+              )}
             </ScrollReveal>
           </a>
         ))}
       </CatalogoCards>
 
       <ScrollReveal delay={180} variant="scale">
-        <ButtonDiv>
-          <Button href="#">Ver catalogo completo</Button>
-        </ButtonDiv>
+        {({ revealProps, revealRef }) => (
+          <ButtonDiv ref={revealRef} {...revealProps}>
+            <Button href="#">Ver catalogo completo</Button>
+          </ButtonDiv>
+        )}
       </ScrollReveal>
     </Container>
   </CatalogoSection>

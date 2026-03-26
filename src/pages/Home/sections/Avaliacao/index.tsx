@@ -40,35 +40,41 @@ const Avaliacao = () => (
   <Container>
     <AvaliacaoSection>
       <ScrollReveal>
-        <AvaliacaoTitle>
-          <h1>Confiança Construída na Prática</h1>
-          <p>
-            Avaliações reais que comprovam a performance e a qualidade da nossa
-            linha.
-          </p>
-        </AvaliacaoTitle>
+        {({ revealProps, revealRef }) => (
+          <AvaliacaoTitle ref={revealRef} {...revealProps}>
+            <h1>Confiança Construída na Prática</h1>
+            <p>
+              Avaliações reais que comprovam a performance e a qualidade da nossa
+              linha.
+            </p>
+          </AvaliacaoTitle>
+        )}
       </ScrollReveal>
       <AvaliacaoBody>
         <ScrollReveal delay={60} variant="left">
-          <AvaliacaoMascot>
-            <picture>
-              <source media="(max-width: 920px)" srcSet={mascotMobile} />
-              <img src={mascot} alt="Mascote apoiado nos cards de avaliacao" />
-            </picture>
-          </AvaliacaoMascot>
+          {({ revealProps, revealRef }) => (
+            <AvaliacaoMascot ref={revealRef} {...revealProps}>
+              <picture>
+                <source media="(max-width: 920px)" srcSet={mascotMobile} />
+                <img src={mascot} alt="Mascote apoiado nos cards de avaliacao" />
+              </picture>
+            </AvaliacaoMascot>
+          )}
         </ScrollReveal>
         <AvaliacaoCards>
           {avaliacoes.map(({ texto, autor }, index) => (
             <ScrollReveal key={autor} delay={index * 90}>
-              <AvaliacaoCard>
-                <AvaliacaoStars aria-label="5 estrelas">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <FaStar key={index} />
-                  ))}
-                </AvaliacaoStars>
-                <p>{texto}</p>
-                <h4>{autor}</h4>
-              </AvaliacaoCard>
+              {({ revealProps, revealRef }) => (
+                <AvaliacaoCard ref={revealRef} {...revealProps}>
+                  <AvaliacaoStars aria-label="5 estrelas">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <FaStar key={index} />
+                    ))}
+                  </AvaliacaoStars>
+                  <p>{texto}</p>
+                  <h4>{autor}</h4>
+                </AvaliacaoCard>
+              )}
             </ScrollReveal>
           ))}
         </AvaliacaoCards>

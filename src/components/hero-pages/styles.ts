@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { cores } from "../../styles";
+
+const heroPagesReveal = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+`
 
 export const HeroPagesSection = styled.section`
     background: radial-gradient(circle, rgba(42, 71, 177, 1) 0%, rgba(0, 24, 114, 1) 100%);
@@ -19,6 +31,15 @@ export const HeroPagesContent = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
+    opacity: 0;
+    animation: ${heroPagesReveal} 0.7s ease-out 0.08s forwards;
+    will-change: opacity, transform;
+
+    @media (prefers-reduced-motion: reduce) {
+        opacity: 1;
+        animation: none;
+        transform: none;
+    }
 `
 
 export const HeroPagesTitle = styled.h1`

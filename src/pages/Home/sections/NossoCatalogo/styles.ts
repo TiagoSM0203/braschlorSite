@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { cores, TitleAndSubtitle } from "../../../../styles";
 import { Button } from "../../../../components/header/styles";
-import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+import { revealStyles, type RevealMotionProps } from "../../scrollRevealStyles";
 
 export const CatalogoTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
     ${revealStyles}

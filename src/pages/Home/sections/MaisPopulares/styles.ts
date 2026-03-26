@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../../../../components/header/styles";
 import { cores, TitleAndSubtitle } from "../../../../styles";
-import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+import { revealStyles, type RevealMotionProps } from "../../scrollRevealStyles";
 
 export const MaisPopularesTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
     ${revealStyles}

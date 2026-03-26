@@ -47,64 +47,70 @@ const EntreEmContato = () => {
     return (
         <Container>
             <ScrollReveal>
-                <EntreEmContatoTitle>
-                    <h1>Entre em contato</h1>
-                </EntreEmContatoTitle>
+                {({ revealProps, revealRef }) => (
+                    <EntreEmContatoTitle ref={revealRef} {...revealProps}>
+                        <h1>Entre em contato</h1>
+                    </EntreEmContatoTitle>
+                )}
             </ScrollReveal>
             <EntreEmContatoSection>
                 <ScrollReveal variant="left">
-                    <Perguntas>
-                        <h2>Perguntas frequentes</h2>
-                        <PerguntasLista>
-                            {perguntasFrequentes.map((item, index) => {
-                                const aberta = perguntaAberta === index
+                    {({ revealProps, revealRef }) => (
+                        <Perguntas ref={revealRef} {...revealProps}>
+                            <h2>Perguntas frequentes</h2>
+                            <PerguntasLista>
+                                {perguntasFrequentes.map((item, index) => {
+                                    const aberta = perguntaAberta === index
 
-                                return (
-                                    <PerguntaItem key={item.pergunta} $aberta={aberta}>
-                                        <PerguntaBotao
-                                            type="button"
-                                            onClick={() => alternarPergunta(index)}
-                                            aria-expanded={aberta}
-                                            aria-controls={`resposta-pergunta-${index}`}
-                                        >
-                                            <span>{item.pergunta}</span>
-                                            <span aria-hidden="true">{aberta ? "-" : "+"}</span>
-                                        </PerguntaBotao>
-                                        {aberta && (
-                                            <p id={`resposta-pergunta-${index}`}>
-                                                {item.resposta}
-                                            </p>
-                                        )}
-                                    </PerguntaItem>
-                                )
-                            })}
-                        </PerguntasLista>
-                    </Perguntas>
+                                    return (
+                                        <PerguntaItem key={item.pergunta} $aberta={aberta}>
+                                            <PerguntaBotao
+                                                type="button"
+                                                onClick={() => alternarPergunta(index)}
+                                                aria-expanded={aberta}
+                                                aria-controls={`resposta-pergunta-${index}`}
+                                            >
+                                                <span>{item.pergunta}</span>
+                                                <span aria-hidden="true">{aberta ? "-" : "+"}</span>
+                                            </PerguntaBotao>
+                                            {aberta && (
+                                                <p id={`resposta-pergunta-${index}`}>
+                                                    {item.resposta}
+                                                </p>
+                                            )}
+                                        </PerguntaItem>
+                                    )
+                                })}
+                            </PerguntasLista>
+                        </Perguntas>
+                    )}
                 </ScrollReveal>
                 <ScrollReveal delay={90} variant="right">
-                    <FaleConoscoColuna>
-                        <h2>Fale conosco</h2>
-                        <FaleConosco>
-                            <FaleConoscoForm action="form">
-                                <NomeSobrenome>
-                                    <div>
-                                        <label htmlFor="nome">Nome</label>
-                                        <input type="text" name="nome" id="nome" />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="sobrenome">Sobrenome</label>
-                                        <input type="text" name="sobrenome" id="sobrenome" />
-                                    </div>
-                                </NomeSobrenome>
-                                <label htmlFor="email">E-mail</label>
-                                <input type="email" name="email" id="email" />
-                                <label htmlFor="telefone">Telefone</label>
-                                <input type="number" name="telefone" id="telefone" />
-                                <label htmlFor="mensagem">Mensagem</label>
-                                <textarea name="mensagem" id="mensagem"></textarea>
-                            </FaleConoscoForm>
-                        </FaleConosco>
-                    </FaleConoscoColuna>
+                    {({ revealProps, revealRef }) => (
+                        <FaleConoscoColuna ref={revealRef} {...revealProps}>
+                            <h2>Fale conosco</h2>
+                            <FaleConosco>
+                                <FaleConoscoForm action="form">
+                                    <NomeSobrenome>
+                                        <div>
+                                            <label htmlFor="nome">Nome</label>
+                                            <input type="text" name="nome" id="nome" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="sobrenome">Sobrenome</label>
+                                            <input type="text" name="sobrenome" id="sobrenome" />
+                                        </div>
+                                    </NomeSobrenome>
+                                    <label htmlFor="email">E-mail</label>
+                                    <input type="email" name="email" id="email" />
+                                    <label htmlFor="telefone">Telefone</label>
+                                    <input type="number" name="telefone" id="telefone" />
+                                    <label htmlFor="mensagem">Mensagem</label>
+                                    <textarea name="mensagem" id="mensagem"></textarea>
+                                </FaleConoscoForm>
+                            </FaleConosco>
+                        </FaleConoscoColuna>
+                    )}
                 </ScrollReveal>
             </EntreEmContatoSection>
         </Container>

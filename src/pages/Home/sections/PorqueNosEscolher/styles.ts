@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { cores, TitleAndSubtitle } from "../../../../styles";
-import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+import { revealStyles, type RevealMotionProps } from "../../scrollRevealStyles";
 
 export const PorqueNosEscolherTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
     ${revealStyles}
