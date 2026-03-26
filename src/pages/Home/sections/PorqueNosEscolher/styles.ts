@@ -30,10 +30,10 @@ export const PorqueNosEscolherCta = styled.div`
         p {
             font-size: 20px;
             width: 100%;
-            text-align: justify;
-            text-align-last: left;
+            text-align: left;
             word-spacing: normal;
-            hyphens: auto;
+            hyphens: none;
+            text-wrap: pretty;
         }
 
         a {
@@ -112,6 +112,13 @@ export const PorqueNosEscolherContent = styled.div`
     @media (max-width: 1024px) {
         max-width: 100%;
         align-items: flex-start;
+
+        p {
+            width: 100%;
+            text-align: left;
+            word-spacing: normal;
+            text-wrap: pretty;
+        }
     }
 
     @media (max-width: 640px) {
@@ -125,8 +132,6 @@ export const PorqueNosEscolherContent = styled.div`
 
         p {
             font-size: 16px;
-            width: 100%;
-            text-align: justify;
         }
     }
 `
@@ -152,6 +157,11 @@ export const PorqueNosEscolherContentTitle = styled.div`
 
     @media (max-width: 1024px) {
         justify-content: center;
+
+        h2 {
+            text-align: left;
+            text-wrap: balance;
+        }
     }
 
     @media (max-width: 640px) {
@@ -164,7 +174,7 @@ export const PorqueNosEscolherContentTitle = styled.div`
         h2 {
             width: 100%;
             font-size: 22px;
-            text-align: justify;
+            text-align: left;
         }
 
         .number {

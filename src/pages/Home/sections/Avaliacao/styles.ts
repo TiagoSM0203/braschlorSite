@@ -95,21 +95,24 @@ export const AvaliacaoMascot = styled.div`
 
 export const AvaliacaoCards = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 300px);
-    gap: 30px;
+    grid-template-columns: repeat(2, minmax(0, 300px));
+    gap: 24px;
     justify-content: center;
     position: relative;
     z-index: 1;
-    width: fit-content;
+    width: 100%;
+    max-width: 624px;
     margin: 0 auto;
 
     @media (max-width: 760px) {
-        grid-template-columns: 300px;
+        grid-template-columns: minmax(0, 320px);
+        max-width: 320px;
     }
 
     @media (max-width: 360px) {
         grid-template-columns: minmax(0, 1fr);
         width: 100%;
+        max-width: 100%;
     }
 `
 
@@ -129,18 +132,36 @@ export const AvaliacaoStars = styled.div`
 export const AvaliacaoCard = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-color: ${cores.white};
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    min-height: 220px;
     border-radius: 36px;
     padding: 20px;
 
     p {
-        margin: 12px 0 12px 0;
+        margin: 12px 0;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+        text-wrap: pretty;
     }
 
-    @media (max-width: 360px) {
-        width: 100%;
+    h4 {
+        margin-top: auto;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 640px) {
+        min-height: auto;
+        border-radius: 28px;
+        padding: 18px;
+
+        p {
+            font-size: 15px;
+        }
+
+        h4 {
+            font-size: 18px;
+        }
     }
 `
