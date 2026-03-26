@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import { Container, TitleAndSubtitle } from "../../../../styles";
+import { Container } from "../../../../styles";
+import ScrollReveal from "../../scrollReveal";
 import {
   MaisPopularesAction,
   MaisPopularesCard,
@@ -18,6 +19,7 @@ import {
   MaisPopularesControlButton,
   MaisPopularesControls,
   MaisPopularesSection,
+  MaisPopularesTitle,
 } from "./styles";
 import percarbonato from "../../../../assets/imgs/percarbonato.png";
 import sabao from "../../../../assets/imgs/sabao-azul.png";
@@ -104,77 +106,83 @@ const MaisPopulares = () => {
   return (
     <MaisPopularesSection>
       <Container>
-        <TitleAndSubtitle>
-          <h1>Mais Populares</h1>
-          <p>Alta performance e rendimento: os favoritos dos nossos clientes.</p>
-        </TitleAndSubtitle>
+        <ScrollReveal>
+          <MaisPopularesTitle>
+            <h1>Mais Populares</h1>
+            <p>Alta performance e rendimento: os favoritos dos nossos clientes.</p>
+          </MaisPopularesTitle>
+        </ScrollReveal>
       </Container>
 
       <MaisPopularesCarouselOuter>
         <MaisPopularesCarouselShell>
           <MaisPopularesCarouselViewport ref={emblaRef}>
             <MaisPopularesCarouselTrack>
-              {maisPopularesItems.map(({ image, alt, title, description }) => (
+              {maisPopularesItems.map(({ image, alt, title, description }, index) => (
                 <MaisPopularesCarouselSlide key={title}>
-                  <MaisPopularesCard>
-                    <MaisPopularesCardContent>
-                      <MaisPopularesCardImage>
-                        <img src={image} alt={alt} />
-                      </MaisPopularesCardImage>
+                  <ScrollReveal delay={(index % 3) * 90}>
+                    <MaisPopularesCard>
+                      <MaisPopularesCardContent>
+                        <MaisPopularesCardImage>
+                          <img src={image} alt={alt} />
+                        </MaisPopularesCardImage>
 
-                      <MaisPopularesCardText>
-                        <h2>{title}</h2>
-                        <p>{description}</p>
-                      </MaisPopularesCardText>
-                    </MaisPopularesCardContent>
+                        <MaisPopularesCardText>
+                          <h2>{title}</h2>
+                          <p>{description}</p>
+                        </MaisPopularesCardText>
+                      </MaisPopularesCardContent>
 
-                    <MaisPopularesAction href="#">Veja mais</MaisPopularesAction>
-                  </MaisPopularesCard>
+                      <MaisPopularesAction href="#">Veja mais</MaisPopularesAction>
+                    </MaisPopularesCard>
+                  </ScrollReveal>
                 </MaisPopularesCarouselSlide>
               ))}
             </MaisPopularesCarouselTrack>
           </MaisPopularesCarouselViewport>
 
-          <MaisPopularesControls>
-            <MaisPopularesControlButton
-              type="button"
-              onClick={() => {
-                emblaApi?.scrollPrev();
-                autoplay.current.reset();
-              }}
-              disabled={!canScrollPrev}
-              aria-label="Slide anterior"
-            >
-              <span aria-hidden="true">&lt;</span>
-            </MaisPopularesControlButton>
+          <ScrollReveal delay={180} variant="scale">
+            <MaisPopularesControls>
+              <MaisPopularesControlButton
+                type="button"
+                onClick={() => {
+                  emblaApi?.scrollPrev();
+                  autoplay.current.reset();
+                }}
+                disabled={!canScrollPrev}
+                aria-label="Slide anterior"
+              >
+                <span aria-hidden="true">&lt;</span>
+              </MaisPopularesControlButton>
 
-            <MaisPopularesCarouselDots>
-              {scrollSnaps.map((_, index) => (
-                <MaisPopularesCarouselDot
-                  key={index}
-                  type="button"
-                  onClick={() => {
-                    emblaApi?.scrollTo(index);
-                    autoplay.current.reset();
-                  }}
-                  $isActive={index === selectedIndex}
-                  aria-label={`Ir para o slide ${index + 1}`}
-                />
-              ))}
-            </MaisPopularesCarouselDots>
+              <MaisPopularesCarouselDots>
+                {scrollSnaps.map((_, index) => (
+                  <MaisPopularesCarouselDot
+                    key={index}
+                    type="button"
+                    onClick={() => {
+                      emblaApi?.scrollTo(index);
+                      autoplay.current.reset();
+                    }}
+                    $isActive={index === selectedIndex}
+                    aria-label={`Ir para o slide ${index + 1}`}
+                  />
+                ))}
+              </MaisPopularesCarouselDots>
 
-            <MaisPopularesControlButton
-              type="button"
-              onClick={() => {
-                emblaApi?.scrollNext();
-                autoplay.current.reset();
-              }}
-              disabled={!canScrollNext}
-              aria-label="Proximo slide"
-            >
-              <span aria-hidden="true">&gt;</span>
-            </MaisPopularesControlButton>
-          </MaisPopularesControls>
+              <MaisPopularesControlButton
+                type="button"
+                onClick={() => {
+                  emblaApi?.scrollNext();
+                  autoplay.current.reset();
+                }}
+                disabled={!canScrollNext}
+                aria-label="Proximo slide"
+              >
+                <span aria-hidden="true">&gt;</span>
+              </MaisPopularesControlButton>
+            </MaisPopularesControls>
+          </ScrollReveal>
         </MaisPopularesCarouselShell>
       </MaisPopularesCarouselOuter>
     </MaisPopularesSection>

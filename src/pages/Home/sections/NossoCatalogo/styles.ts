@@ -1,6 +1,11 @@
 import styled from "styled-components";
-import { cores } from "../../../../styles";
+import { cores, TitleAndSubtitle } from "../../../../styles";
 import { Button } from "../../../../components/header/styles";
+import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+
+export const CatalogoTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
+    ${revealStyles}
+`
 
 export const CatalogoSection = styled.section`
     padding: 0 0 88px;
@@ -47,7 +52,8 @@ export const CatalogoCards = styled.div`
     }
 `
 
-export const CatalogoCard = styled.div`
+export const CatalogoCard = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -108,7 +114,8 @@ export const CatalogoCard = styled.div`
     }
 `
 
-export const ButtonDiv = styled.div`
+export const ButtonDiv = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     justify-content: center;
 

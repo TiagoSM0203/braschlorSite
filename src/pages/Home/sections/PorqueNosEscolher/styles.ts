@@ -1,11 +1,17 @@
 import styled from "styled-components";
-import { cores } from "../../../../styles";
+import { cores, TitleAndSubtitle } from "../../../../styles";
+import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+
+export const PorqueNosEscolherTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
+    ${revealStyles}
+`
 
 export const PorqueNosEscolherSection = styled.div`
     margin-bottom: 80px;
 `
 
-export const PorqueNosEscolherCta = styled.div`
+export const PorqueNosEscolherCta = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +48,8 @@ export const PorqueNosEscolherCta = styled.div`
     }
 `
 
-export const PorqueNosEscolherCard = styled.div`
+export const PorqueNosEscolherCard = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     gap: 48px;
     justify-content: center;

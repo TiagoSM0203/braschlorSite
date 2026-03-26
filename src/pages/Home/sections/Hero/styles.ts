@@ -1,25 +1,60 @@
-import styled from "styled-components";
-import heroImg from "../../../../assets/imgs/hero2.png";
+import styled, { keyframes } from "styled-components";
 import { cores } from "../../../../styles";
 import { Button } from "../../../../components/header/styles";
+
+const heroReveal = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+`;
 
 export const HeroSection = styled.section`
     position: relative;
     min-height: 100vh;
     width: 100%;
-    background: url(${heroImg}) center/cover no-repeat;
+    overflow: hidden;
+    background-color: ${cores.black};
     color: ${cores.white};
     display: flex;
     align-items: center;
     isolation: isolate;
 
     @media (max-width: 900px) {
-        min-height: auto;
-        background-position: 72% center;
+        min-height: 100svh;
     }
+`;
 
-    @media (max-width: 640px) {
-        background-position: 74% center;
+const HeroBackgroundVideo = styled.video`
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    pointer-events: none;
+    z-index: 0;
+`;
+
+export const DesktopHeroVideo = styled(HeroBackgroundVideo)`
+    display: block;
+
+    @media (max-width: 900px) {
+        display: none;
+    }
+`;
+
+export const MobileHeroVideo = styled(HeroBackgroundVideo)`
+    display: none;
+    object-position: center center;
+
+    @media (max-width: 900px) {
+        display: block;
     }
 `;
 
@@ -46,17 +81,18 @@ export const HeroContent = styled.div`
 
     @media (max-width: 900px) {
         > div {
-            min-height: auto;
+            min-height: 100svh;
             justify-content: center;
-            padding-top: 140px;
-            padding-bottom: 64px;
+            align-items: flex-start;
+            padding-top: 96px;
+            padding-bottom: 32px;
         }
     }
 
     @media (max-width: 640px) {
         > div {
-            padding-top: 124px;
-            padding-bottom: 48px;
+            padding-top: 90px;
+            padding-bottom: 24px;
         }
     }
 `;
@@ -66,6 +102,20 @@ export const HeroCard = styled.div`
     flex-direction: column;
     gap: 20px;
     max-width: 800px;
+
+    > * {
+        opacity: 0;
+        animation: ${heroReveal} 0.75s ease-out forwards;
+        will-change: opacity, transform;
+    }
+
+    h1 {
+        animation-delay: 4s;
+    }
+
+    p {
+        animation-delay: 4.15s;
+    }
 
     h1 {
         max-width: 800px;
@@ -89,6 +139,14 @@ export const HeroCard = styled.div`
         color: ${cores.green};
     }
 
+    @media (prefers-reduced-motion: reduce) {
+        > * {
+            opacity: 1;
+            animation: none;
+            transform: none;
+        }
+    }
+
     @media (max-width: 1100px) {
         max-width: 640px;
 
@@ -107,38 +165,56 @@ export const HeroCard = styled.div`
     }
 
     @media (max-width: 900px) {
-        max-width: 560px;
-        padding: 28px;
-        border-radius: 28px;
-        background: rgba(0, 0, 0, 0.21);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        width: 100%;
+        max-width: 420px;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
 
         h1 {
-            max-width: 560px;
+            max-width: 380px;
+            font-size: 18px;
+            line-height: 1.15;
+            letter-spacing: 0.02em;
+        }
+
+        span {
+            font-size: clamp(60px, 11vw, 82px);
+            line-height: 0.88;
+        }
+
+        p {
+            max-width: 360px;
+            font-size: 16px;
+            line-height: 1.35;
         }
     }
 
     @media (max-width: 640px) {
-        align-items: center;
-        text-align: center;
-        gap: 16px;
-        padding: 22px 18px;
-        border-radius: 24px;
+        max-width: 320px;
+        gap: 10px;
 
         h1 {
-            font-size: clamp(28px, 10vw, 20px);
-            line-height: 1;
+            max-width: 290px;
+            font-size: 15px;
+            line-height: 1.12;
         }
 
         span {
-            font-size: clamp(62px, 20vw, 88px);
+            font-size: clamp(46px, 16vw, 64px);
+            line-height: 0.9;
         }
 
         p {
-            font-size: 16px;
-            max-width: 100%;
+            max-width: 290px;
+            font-size: 14px;
+            line-height: 1.3;
         }
     }
 `;
@@ -149,6 +225,7 @@ export const ButtonDiv = styled.div`
     flex-wrap: wrap;
     gap: 16px;
     margin-top: 36px;
+    animation-delay: 4.3s;
 
     ${Button} {
         border: 2px solid ${cores.green};
@@ -182,14 +259,34 @@ export const ButtonDiv = styled.div`
         }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 900px) {
         width: 100%;
+        max-width: 320px;
         flex-direction: column;
-        margin-top: 24px;
+        margin-top: 14px;
+        gap: 10px;
 
         ${Button},
         .botao {
             width: 100%;
+            min-height: 46px;
+            padding: 11px 18px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        width: 100%;
+        max-width: 280px;
+        flex-direction: column;
+        margin-top: 12px;
+
+        ${Button},
+        .botao {
+            width: 100%;
+            min-height: 42px;
+            padding: 10px 16px;
+            font-size: 13px;
         }
     }
 `;

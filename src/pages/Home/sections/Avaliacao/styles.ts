@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../../../styles";
+import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
 
 export const AvaliacaoSection = styled.div`
     background: #2A47B1;
@@ -18,7 +19,8 @@ export const AvaliacaoSection = styled.div`
     }
 `
 
-export const AvaliacaoTitle = styled.div`
+export const AvaliacaoTitle = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     gap: 20px;
     justify-content: space-between;
@@ -62,7 +64,8 @@ export const AvaliacaoBody = styled.div`
     }
 `
 
-export const AvaliacaoMascot = styled.div`
+export const AvaliacaoMascot = styled.div<RevealMotionProps>`
+    ${revealStyles}
     width: clamp(170px, 20vw, 250px);
     position: absolute;
     right: 100%;
@@ -129,7 +132,8 @@ export const AvaliacaoStars = styled.div`
     }
 `
 
-export const AvaliacaoCard = styled.div`
+export const AvaliacaoCard = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     flex-direction: column;
     background-color: ${cores.white};

@@ -5,12 +5,14 @@ import desinfetantes from "../../../../assets/imgs/desinfetante.png";
 import lavanderia from "../../../../assets/imgs/lavanderia.png";
 import automotivo from "../../../../assets/imgs/automotivo.png";
 import { Button } from "../../../../components/header/styles";
-import { Container, TitleAndSubtitle } from "../../../../styles";
+import { Container } from "../../../../styles";
+import ScrollReveal from "../../scrollReveal";
 import {
   ButtonDiv,
   CatalogoCard,
   CatalogoCards,
   CatalogoSection,
+  CatalogoTitle,
 } from "./styles";
 
 const catalogoItems = [
@@ -56,29 +58,35 @@ const catalogoItems = [
 const NossoCatalogo = () => (
   <CatalogoSection>
     <Container>
-      <TitleAndSubtitle>
-        <h1>Nosso Catalogo</h1>
-        <p>
-          Escolha uma categoria e veja os produtos ideais para sua rotina ou
-          para revender.
-        </p>
-      </TitleAndSubtitle>
+      <ScrollReveal>
+        <CatalogoTitle>
+          <h1>Nosso Catalogo</h1>
+          <p>
+            Escolha uma categoria e veja os produtos ideais para sua rotina ou
+            para revender.
+          </p>
+        </CatalogoTitle>
+      </ScrollReveal>
 
       <CatalogoCards>
-        {catalogoItems.map(({ image, alt, title, description }) => (
+        {catalogoItems.map(({ image, alt, title, description }, index) => (
           <a href="#" key={title}>
-            <CatalogoCard>
-              <img src={image} alt={alt} />
-              <h2>{title}</h2>
-              <p>{description}</p>
-            </CatalogoCard>
+            <ScrollReveal delay={index * 90}>
+              <CatalogoCard>
+                <img src={image} alt={alt} />
+                <h2>{title}</h2>
+                <p>{description}</p>
+              </CatalogoCard>
+            </ScrollReveal>
           </a>
         ))}
       </CatalogoCards>
 
-      <ButtonDiv>
-        <Button href="#">Ver catalogo completo</Button>
-      </ButtonDiv>
+      <ScrollReveal delay={180} variant="scale">
+        <ButtonDiv>
+          <Button href="#">Ver catalogo completo</Button>
+        </ButtonDiv>
+      </ScrollReveal>
     </Container>
   </CatalogoSection>
 );

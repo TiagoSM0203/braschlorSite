@@ -1,7 +1,9 @@
 import { useState } from "react"
-import { Container, TitleAndSubtitle } from "../../../../styles"
+import { Container } from "../../../../styles"
+import ScrollReveal from "../../scrollReveal"
 import {
     EntreEmContatoSection,
+    EntreEmContatoTitle,
     FaleConoscoColuna,
     FaleConosco,
     FaleConoscoForm,
@@ -19,7 +21,7 @@ const perguntasFrequentes = [
     },
     {
         pergunta: "Como faço para comprar seus produtos para uso próprio?",
-        resposta: "Nossos produtos esão disponiveis para compra online nos marketplaces: Mercado Livre e Shopee! Acesse Nossos Produtos e saiba mais!"
+        resposta: "Nossos produtos estão disponiveis para compra online nos marketplaces: Mercado Livre e Shopee! Acesse Nossos Produtos e saiba mais!"
     },
     {
         pergunta: "Posso misturar água sanitária com outros produtos?",
@@ -44,60 +46,66 @@ const EntreEmContato = () => {
 
     return (
         <Container>
-            <TitleAndSubtitle>
-                <h1>Entre em contato</h1>
-            </TitleAndSubtitle>
+            <ScrollReveal>
+                <EntreEmContatoTitle>
+                    <h1>Entre em contato</h1>
+                </EntreEmContatoTitle>
+            </ScrollReveal>
             <EntreEmContatoSection>
-                <Perguntas>
-                    <h2>Perguntas frequentes</h2>
-                    <PerguntasLista>
-                        {perguntasFrequentes.map((item, index) => {
-                            const aberta = perguntaAberta === index
+                <ScrollReveal variant="left">
+                    <Perguntas>
+                        <h2>Perguntas frequentes</h2>
+                        <PerguntasLista>
+                            {perguntasFrequentes.map((item, index) => {
+                                const aberta = perguntaAberta === index
 
-                            return (
-                                <PerguntaItem key={item.pergunta} $aberta={aberta}>
-                                    <PerguntaBotao
-                                        type="button"
-                                        onClick={() => alternarPergunta(index)}
-                                        aria-expanded={aberta}
-                                        aria-controls={`resposta-pergunta-${index}`}
-                                    >
-                                        <span>{item.pergunta}</span>
-                                        <span aria-hidden="true">{aberta ? "−" : "+"}</span>
-                                    </PerguntaBotao>
-                                    {aberta && (
-                                        <p id={`resposta-pergunta-${index}`}>
-                                            {item.resposta}
-                                        </p>
-                                    )}
-                                </PerguntaItem>
-                            )
-                        })}
-                    </PerguntasLista>
-                </Perguntas>
-                <FaleConoscoColuna>
-                    <h2>Fale conosco</h2>
-                    <FaleConosco>
-                        <FaleConoscoForm action="form">
-                            <NomeSobrenome>
-                                <div>
-                                    <label htmlFor="nome">Nome</label>
-                                    <input type="text" name="nome" id="nome" />
-                                </div>
-                                <div>
-                                    <label htmlFor="sobrenome">Sobrenome</label>
-                                    <input type="text" name="sobrenome" id="sobrenome" />
-                                </div>
-                            </NomeSobrenome>
-                            <label htmlFor="email">E-mail</label>
-                            <input type="email" name="email" id="email" />
-                            <label htmlFor="telefone">Telefone</label>
-                            <input type="number" name="telefone" id="telefone" />
-                            <label htmlFor="mensagem">Mensagem</label>
-                            <textarea name="mensagem" id="mensagem"></textarea>
-                        </FaleConoscoForm>
-                    </FaleConosco>
-                </FaleConoscoColuna>
+                                return (
+                                    <PerguntaItem key={item.pergunta} $aberta={aberta}>
+                                        <PerguntaBotao
+                                            type="button"
+                                            onClick={() => alternarPergunta(index)}
+                                            aria-expanded={aberta}
+                                            aria-controls={`resposta-pergunta-${index}`}
+                                        >
+                                            <span>{item.pergunta}</span>
+                                            <span aria-hidden="true">{aberta ? "-" : "+"}</span>
+                                        </PerguntaBotao>
+                                        {aberta && (
+                                            <p id={`resposta-pergunta-${index}`}>
+                                                {item.resposta}
+                                            </p>
+                                        )}
+                                    </PerguntaItem>
+                                )
+                            })}
+                        </PerguntasLista>
+                    </Perguntas>
+                </ScrollReveal>
+                <ScrollReveal delay={90} variant="right">
+                    <FaleConoscoColuna>
+                        <h2>Fale conosco</h2>
+                        <FaleConosco>
+                            <FaleConoscoForm action="form">
+                                <NomeSobrenome>
+                                    <div>
+                                        <label htmlFor="nome">Nome</label>
+                                        <input type="text" name="nome" id="nome" />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="sobrenome">Sobrenome</label>
+                                        <input type="text" name="sobrenome" id="sobrenome" />
+                                    </div>
+                                </NomeSobrenome>
+                                <label htmlFor="email">E-mail</label>
+                                <input type="email" name="email" id="email" />
+                                <label htmlFor="telefone">Telefone</label>
+                                <input type="number" name="telefone" id="telefone" />
+                                <label htmlFor="mensagem">Mensagem</label>
+                                <textarea name="mensagem" id="mensagem"></textarea>
+                            </FaleConoscoForm>
+                        </FaleConosco>
+                    </FaleConoscoColuna>
+                </ScrollReveal>
             </EntreEmContatoSection>
         </Container>
     )

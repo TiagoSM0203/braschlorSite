@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { Button } from "../../../../components/header/styles";
 import { cores, TitleAndSubtitle } from "../../../../styles";
+import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+
+export const MaisPopularesTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
+    ${revealStyles}
+`
 
 export const MaisPopularesSection = styled.section`
     padding: 0 0 104px;
@@ -14,7 +19,7 @@ export const MaisPopularesSection = styled.section`
         padding: 0 0 72px;
     }
 
-    ${TitleAndSubtitle} {
+    ${MaisPopularesTitle} {
         margin-top: 0;
         padding-top: 80px;
     }
@@ -88,7 +93,8 @@ export const MaisPopularesCarouselSlide = styled.div`
     }
 `
 
-export const MaisPopularesCard = styled.article`
+export const MaisPopularesCard = styled.article<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -254,7 +260,8 @@ export const MaisPopularesAction = styled(Button)`
     }
 `
 
-export const MaisPopularesControls = styled.div`
+export const MaisPopularesControls = styled.div<RevealMotionProps>`
+    ${revealStyles}
     display: flex;
     align-items: center;
     justify-content: center;

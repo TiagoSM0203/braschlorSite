@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { cores } from "../../../../styles";
+import { cores, TitleAndSubtitle } from "../../../../styles";
+import { revealStyles, type RevealMotionProps } from "../../scrollReveal";
+
+export const EntreEmContatoTitle = styled(TitleAndSubtitle)<RevealMotionProps>`
+    ${revealStyles}
+`
 
 export const EntreEmContatoSection = styled.div`
     display: flex;
@@ -20,7 +25,8 @@ export const EntreEmContatoSection = styled.div`
     }
 `
 
-export const Perguntas = styled.div`
+export const Perguntas = styled.div<RevealMotionProps>`
+    ${revealStyles}
     flex: 1;
     width: 100%;
 `
@@ -74,7 +80,8 @@ export const PerguntaBotao = styled.button`
     }
 `
 
-export const FaleConoscoColuna = styled.div`
+export const FaleConoscoColuna = styled.div<RevealMotionProps>`
+    ${revealStyles}
     flex: 1;
     width: 100%;
 

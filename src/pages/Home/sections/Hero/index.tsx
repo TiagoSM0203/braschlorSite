@@ -1,14 +1,36 @@
 import { Container } from "../../../../styles";
+import heroDesktopVideo from "../../../../assets/imgs/hero-desktop.mp4";
+import heroMobileVideo from "../../../../assets/imgs/hero-mobile.mp4";
 import {
   ButtonDiv,
+  DesktopHeroVideo,
   HeroCard,
   HeroContent,
+  MobileHeroVideo,
   HeroSection,
 } from "./styles";
 import { Button } from "../../../../components/header/styles";
 
 const Hero = () => (
   <HeroSection>
+    <DesktopHeroVideo
+      autoPlay
+      muted
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src={heroDesktopVideo} type="video/mp4" />
+    </DesktopHeroVideo>
+    <MobileHeroVideo
+      autoPlay
+      muted
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src={heroMobileVideo} type="video/mp4" />
+    </MobileHeroVideo>
     <HeroContent>
       <Container>
         <HeroCard>
