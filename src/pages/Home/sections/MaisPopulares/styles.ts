@@ -31,10 +31,11 @@ export const MaisPopularesCarouselOuter = styled.div`
 `
 
 export const MaisPopularesCarouselShell = styled.div`
-    --carousel-gap: 28px;
+    --carousel-gap: 24px;
     --carousel-shadow-space: 18px;
 
-    width: min(1680px, calc(100% + 180px));
+    width: 100%;
+    max-width: 1480px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -42,17 +43,16 @@ export const MaisPopularesCarouselShell = styled.div`
     padding: 0 24px;
 
     @media (max-width: 1320px) {
-        --carousel-gap: 22px;
-        width: 100%;
+        --carousel-gap: 18px;
     }
 
     @media (max-width: 1100px) {
-        --carousel-gap: 22px;
-        padding: 0 20px;
+        --carousel-gap: 14px;
+        padding: 0 16px;
     }
 
     @media (max-width: 900px) {
-        width: 100%;
+        --carousel-gap: 22px;
     }
 
     @media (max-width: 640px) {
@@ -63,6 +63,7 @@ export const MaisPopularesCarouselShell = styled.div`
 `
 
 export const MaisPopularesCarouselViewport = styled.div`
+    width: 100%;
     overflow: hidden;
     padding: var(--carousel-shadow-space) 0;
 `
@@ -77,10 +78,6 @@ export const MaisPopularesCarouselSlide = styled.div`
     flex: 0 0 calc((100% - (var(--carousel-gap) * 2)) / 3);
     min-width: 0;
     padding-left: var(--carousel-gap);
-
-    @media (max-width: 1320px) {
-        flex: 0 0 calc((100% - var(--carousel-gap)) / 2);
-    }
 
     @media (max-width: 900px) {
         flex: 0 0 calc((100% - var(--carousel-gap)) / 2);
@@ -101,6 +98,19 @@ export const MaisPopularesCard = styled.article`
     background-color: ${cores.white};
     box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.1);
 
+    @media (max-width: 1320px) {
+        gap: 22px;
+        min-height: 330px;
+        padding: 18px 18px 22px;
+        border-radius: 30px;
+    }
+
+    @media (max-width: 1100px) {
+        min-height: 300px;
+        padding: 16px 16px 20px;
+        border-radius: 26px;
+    }
+
     @media (max-width: 640px) {
         gap: 22px;
         min-height: auto;
@@ -115,6 +125,16 @@ export const MaisPopularesCardContent = styled.div`
     align-items: center;
     gap: 22px;
     flex: 1;
+
+    @media (max-width: 1320px) {
+        grid-template-columns: 108px minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    @media (max-width: 1100px) {
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 14px;
+    }
 
     @media (max-width: 640px) {
         grid-template-columns: minmax(0, 1fr);
@@ -135,6 +155,22 @@ export const MaisPopularesCardImage = styled.div`
         max-width: 132px;
         height: auto;
         object-fit: contain;
+    }
+
+    @media (max-width: 1320px) {
+        min-height: 152px;
+
+        img {
+            max-width: 108px;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        min-height: 132px;
+
+        img {
+            max-width: 92px;
+        }
     }
 
     @media (max-width: 640px) {
@@ -163,6 +199,31 @@ export const MaisPopularesCardText = styled.div`
         color: ${cores.black};
     }
 
+    @media (max-width: 1320px) {
+        h2 {
+            padding-bottom: 14px;
+            margin-bottom: 14px;
+            font-size: clamp(22px, 2.1vw, 30px);
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.45;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        h2 {
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            font-size: clamp(20px, 1.8vw, 26px);
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+
     @media (max-width: 640px) {
         width: 100%;
 
@@ -184,6 +245,10 @@ export const MaisPopularesAction = styled(Button)`
     font-size: clamp(18px, 2.8vw, 22px);
     font-weight: bold;
 
+    @media (max-width: 1320px) {
+        font-size: clamp(16px, 1.8vw, 20px);
+    }
+
     @media (max-width: 640px) {
         font-size: 20px;
     }
@@ -193,6 +258,9 @@ export const MaisPopularesControls = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
     gap: 18px;
     flex-wrap: wrap;
 `
