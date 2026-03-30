@@ -6,8 +6,8 @@ export const HeaderBar = styled.header`
     position: relative;
     padding: 10px 0;
     color: ${cores.white};
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: 24px;
 
@@ -29,24 +29,24 @@ export const HeaderBar = styled.header`
         }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+        display: flex;
+        justify-content: space-between;
         padding: 18px 0;
     }
 `
 
 export const Nav = styled.nav<{ $isMenuOpen: boolean }>`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 0;
 
     @media (max-width: 1100px) {
         gap: 20px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         position: absolute;
         top: calc(100% + 8px);
         left: 0;
@@ -75,13 +75,15 @@ export const Nav = styled.nav<{ $isMenuOpen: boolean }>`
 export const Links = styled.ul`
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-width: 0;
     gap: 25px;
 
     @media (max-width: 1100px) {
         gap: 18px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
@@ -106,7 +108,7 @@ export const LinkItem = styled.li`
         }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         a {
             padding: 10px 0;
             white-space: normal;
@@ -138,7 +140,7 @@ const buttonStyles = css`
         font-size: 15px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         width: 100%;
     }
 `
@@ -153,9 +155,9 @@ const RouterButton = styled(Link)`
 
 export const DesktopButton = styled(RouterButton)`
     display: inline-flex;
-    margin-left: auto;
+    margin-left: 0;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         display: none;
     }
 `
@@ -163,7 +165,7 @@ export const DesktopButton = styled(RouterButton)`
 export const MobileButton = styled(RouterButton)`
     display: none;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         display: inline-flex;
         width: 100%;
     }
@@ -205,7 +207,7 @@ export const MenuButton = styled.button<{ $isMenuOpen: boolean }>`
           $isMenuOpen ? "translateY(-7px) rotate(-45deg)" : "none"};
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         display: inline-flex;
     }
 `

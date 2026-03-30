@@ -13,13 +13,17 @@ import {
 
 import logo from "../../assets/imgs/logo_braschlor.png";
 
+const HEADER_COMPACT_BREAKPOINT = 1024;
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCompactView, setIsCompactView] = useState(() => window.innerWidth <= 900);
+  const [isCompactView, setIsCompactView] = useState(
+    () => window.innerWidth <= HEADER_COMPACT_BREAKPOINT,
+  );
 
   useEffect(() => {
     const handleResize = () => {
-      const compactView = window.innerWidth <= 900;
+      const compactView = window.innerWidth <= HEADER_COMPACT_BREAKPOINT;
 
       setIsCompactView(compactView);
 

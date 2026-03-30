@@ -16,13 +16,13 @@ import {
 const avaliacoes = [
   {
     texto:
-      "Comprei o lava roupas e o percarbonato e me surpreendi muito. Qualidade excelente, limpa de verdade e rende bastante.",
+      "Produto excelente. Minha roupa estava com mancha amarela, deixei de molho de um dia para o outro,a mancha saiu. Aprovadíssimo!",
     autor: "Carla Mendes",
   },
   {
     texto:
-      "Trabalho com limpeza há anos e posso dizer que esses produtos têm um ótimo padrão. Preço bom e qualidade consistente. Meus clientes estão elogiando bastante!",
-    autor: "Patrícia Oliveira",
+      "Nossa, esses produtos de vocês são demais. Meus clientes amaram. Quero mais desse lava roupas azul.",
+    autor: "Luciene",
   },
   {
     texto:
@@ -55,7 +55,7 @@ const Avaliacao = () => (
           {({ revealProps, revealRef }) => (
             <AvaliacaoMascot ref={revealRef} {...revealProps}>
               <picture>
-                <source media="(max-width: 920px)" srcSet={mascotMobile} />
+                <source media="(max-width: 1024px)" srcSet={mascotMobile} />
                 <img src={mascot} alt="Mascote apoiado nos cards de avaliacao" />
               </picture>
             </AvaliacaoMascot>

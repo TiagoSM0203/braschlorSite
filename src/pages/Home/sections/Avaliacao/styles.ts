@@ -49,13 +49,17 @@ export const AvaliacaoTitle = styled.div<RevealMotionProps>`
 `
 
 export const AvaliacaoBody = styled.div`
-    position: relative;
-    width: fit-content;
+    display: grid;
+    grid-template-columns: clamp(150px, 20vw, 250px) minmax(0, 624px);
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+    max-width: 880px;
     margin-top: 36px;
     margin-left: auto;
     margin-right: auto;
 
-    @media (max-width: 920px) {
+    @media (max-width: 1024px) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -67,28 +71,40 @@ export const AvaliacaoBody = styled.div`
 export const AvaliacaoMascot = styled.div<RevealMotionProps>`
     ${revealStyles}
     width: clamp(170px, 20vw, 250px);
-    position: absolute;
-    right: 100%;
-    bottom: 0;
-    margin-right: -24px;
+    justify-self: end;
+    align-self: end;
     z-index: 2;
     flex-shrink: 0;
+
+    picture {
+        display: block;
+    }
 
     img {
         display: block;
         width: 100%;
         height: auto;
+        transform: translateX(24px);
     }
 
     @media (max-width: 1100px) {
         width: clamp(150px, 18vw, 210px);
-        margin-right: -12px;
+
+        img {
+            transform: translateX(12px);
+        }
     }
 
-    @media (max-width: 920px) {
-        position: static;
+    @media (max-width: 1024px) {
+        display: flex;
+        justify-content: center;
         width: clamp(150px, 32vw, 220px);
-        margin-right: 0;
+        align-self: center;
+        justify-self: center;
+
+        img {
+            transform: none;
+        }
     }
 
     @media (max-width: 640px) {
@@ -146,7 +162,6 @@ export const AvaliacaoCard = styled.div<RevealMotionProps>`
         margin: 12px 0;
         line-height: 1.45;
         overflow-wrap: anywhere;
-        text-wrap: pretty;
     }
 
     h4 {

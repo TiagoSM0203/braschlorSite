@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const cores = {
     white: "#FFFFFF",
@@ -22,22 +22,18 @@ export const GlobalCss = createGlobalStyle`
         text-decoration: none;
     }
 
+    html,
+    body,
+    #root {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     body {
         background-color: ${cores.white};
         padding: 0;
         overflow-x: hidden;
-    }
-`
-
-const pageReveal = keyframes`
-    from {
-        opacity: 0;
-        transform: translateY(24px) scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
     }
 `
 
@@ -85,45 +81,6 @@ export const PageSection = styled.section`
     padding: 72px 0 96px;
 `
 
-export const PageContentCard = styled.div`
-    max-width: 760px;
-    padding: 48px;
-    border-radius: 32px;
-    background-color: ${cores.white};
-    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.08);
-    opacity: 0;
-    animation: ${pageReveal} 0.7s ease-out 0.12s forwards;
-    will-change: opacity, transform;
-
-    h1 {
-        font-size: clamp(36px, 6vw, 64px);
-        line-height: 1;
-        color: ${cores.blueDark};
-        margin-bottom: 20px;
-    }
-
-    p {
-        font-size: 18px;
-        line-height: 1.7;
-        color: ${cores.gray};
-    }
-
-    @media (max-width: 640px) {
-        padding: 28px 22px;
-        border-radius: 24px;
-
-        p {
-            font-size: 16px;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        opacity: 1;
-        animation: none;
-        transform: none;
-    }
-`
-
 export const PageEyebrow = styled.span`
     display: inline-block;
     margin-bottom: 18px;
@@ -133,5 +90,4 @@ export const PageEyebrow = styled.span`
     text-transform: uppercase;
     color: ${cores.green};
 `
-
 

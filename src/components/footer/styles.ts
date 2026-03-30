@@ -173,12 +173,14 @@ export const ContactLink = styled.a`
     ${interactiveTextStyles}
     font-size: 18px;
     line-height: 1.45;
+    overflow-wrap: anywhere;
 `
 
 export const ContactText = styled.span`
     color: rgba(255, 255, 255, 0.94);
     font-size: 18px;
     line-height: 1.45;
+    overflow-wrap: anywhere;
 `
 
 export const FooterDivider = styled.div`

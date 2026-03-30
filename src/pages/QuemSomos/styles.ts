@@ -51,10 +51,9 @@ export const NossaHistoriaText = styled.div`
   max-width: 600px;
 
   p {
-    font-size: clamp(16px, 1.45vw, 20px);
+    font-size: clamp(18px, 1.45vw, 20px);
     line-height: 1.7;
     margin-bottom: 20px;
-    text-wrap: pretty;
   }
 
   @media (max-width: 900px) {
@@ -65,6 +64,37 @@ export const NossaHistoriaText = styled.div`
     p {
       margin-bottom: 16px;
     }
+  }
+`;
+
+export const NossaHistoriaExtra = styled.div<{ $isExpanded: boolean }>`
+  display: grid;
+  grid-template-rows: ${({ $isExpanded }) => ($isExpanded ? "1fr" : "0fr")};
+  transition: grid-template-rows 0.5s ease-in-out;
+
+  > div {
+    overflow: hidden;
+    opacity: ${({ $isExpanded }) => ($isExpanded ? 1 : 0)};
+    transform: translateY(${({ $isExpanded }) => ($isExpanded ? "0" : "-12px")});
+    transition:
+      opacity 0.35s ease-in-out,
+      transform 0.5s ease-in-out;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+export const NossaHistoriaToggle = styled(Button)`
+  margin-top: 8px;
+  transition:
+    background-color 0.25s ease-in-out,
+    color 0.25s ease-in-out,
+    transform 0.25s ease-in-out;
+
+  &:hover {
+    transform: translateY(-1px);
   }
 `;
 
