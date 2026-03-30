@@ -6,7 +6,7 @@ export const cores = {
     greenLight: "#9ad951ff",
     black: "#000000",
     gray: "#787878",
-    blueLight: "#0082DB",
+    blueLight: "#254ace",
     blueDark: "#223c9f",
     grayLight: "#d9d9d9",
     grayLightOpacity: "#d9d9d930"
