@@ -50,7 +50,7 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
     descricao:
       "Disponivel em 5L e 2L, foi pensada para limpeza, desinfeccao e branqueamento de roupas e superficies lavaveis.",
     marketplaces: {
-      shopee: "https://shopee.com.br/product/1738012223/58207015602/",
+      shopee: "https://shopee.com.br/product/1738012223/58206870923/",
     },
   },
   alvejante: {
