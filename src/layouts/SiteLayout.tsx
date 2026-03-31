@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/footer";
@@ -40,6 +41,10 @@ const SiteLayout = () => {
   const produtoAtual = getProdutoByChave(produtoSlug);
   const heroTitle = currentInternalPage?.label ?? produtoAtual?.nome;
   const shouldShowHero = Boolean(heroTitle) && !isProdutoDetalheRoute;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname]);
 
   return (
     <>
