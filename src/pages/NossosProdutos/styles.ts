@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 import { cores } from "../../styles";
 
 export const ProdutosToolbar = styled.div`
@@ -98,6 +99,17 @@ export const ProdutosGrid = styled.div`
   }
 `;
 
+export const ProdutosEmpty = styled.p`
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 28px 24px;
+  border: 1px solid ${cores.grayLight};
+  border-radius: 20px;
+  color: ${cores.gray};
+  font-size: 16px;
+  text-align: center;
+`;
+
 export const ProdutoImageBox = styled.div`
   position: relative;
   width: 100%;
@@ -116,7 +128,7 @@ export const ProdutoImageBox = styled.div`
   }
 `;
 
-export const ProdutoAction = styled.button`
+export const ProdutoAction = styled(Link)`
   position: absolute;
   left: 50%;
   bottom: 40px;
@@ -133,6 +145,9 @@ export const ProdutoAction = styled.button`
   pointer-events: none;
   box-shadow: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.1);
   transform: translate(-50%, 10px);
@@ -146,22 +161,41 @@ export const ProdutoAction = styled.button`
 export const ProdutoNome = styled.h3`
   margin-top: 16px;
   color: ${cores.gray};
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.35;
   transition: color 0.2s ease;
 `;
 
-export const ProdutoMarketplaceRow = styled.div`
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
+export const ProdutoMarketplaceSection = styled.div`
+  margin-top: 10px;
+  display: grid;
   gap: 10px;
 `;
 
-export const ProdutoMarketplaceButton = styled.button<{ $variant: "shopee" | "mercadoLivre" }>`
-  flex: 1;
+export const ProdutoMarketplaceCaption = styled.p`
+  margin: 0;
+  color: ${cores.gray};
+  font-size: 15px;
+  line-height: 1.6;
+`;
+
+export const ProdutoMarketplaceRow = styled.div<{ $isSingle?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: ${({ $isSingle }) => ($isSingle ? "center" : "flex-start")};
+  gap: 10px;
+  flex-wrap: wrap;
+`;
+
+const produtoMarketplaceControlStyles = css<{
+  $variant: "shopee" | "mercadoLivre";
+  $isSingle?: boolean;
+}>`
+  flex: ${({ $isSingle }) => ($isSingle ? "0 1 240px" : "1 1 0")};
   min-width: 0;
+  width: ${({ $isSingle }) => ($isSingle ? "min(100%, 240px)" : "auto")};
+  max-width: ${({ $isSingle }) => ($isSingle ? "50%" : "none")};
   min-height: 42px;
   padding: 0 14px;
   border: none;
@@ -170,14 +204,12 @@ export const ProdutoMarketplaceButton = styled.button<{ $variant: "shopee" | "me
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  cursor: pointer;
   background-color: ${({ $variant }) =>
-    $variant === "shopee" ? "#e9340f" : "#FFE600"};
-  color: ${({ $variant }) =>
-    $variant === "shopee" ? cores.white : cores.blueDark};
+    $variant === "shopee" ? "#ea4416" : "#f1d706"};
+  color: ${cores.white};
   transition:
     transform 0.2s ease,
-    filter 0.2s ease;
+    background-color 0.2s ease;
 
   img {
     display: block;
@@ -193,11 +225,6 @@ export const ProdutoMarketplaceButton = styled.button<{ $variant: "shopee" | "me
     flex-shrink: 0;
   }
 
-  &:hover {
-    transform: translateY(-1px);
-    filter: brightness(0.96);
-  }
-
   @media (max-width: 640px) {
     min-height: 40px;
     padding: 0 12px;
@@ -205,6 +232,32 @@ export const ProdutoMarketplaceButton = styled.button<{ $variant: "shopee" | "me
     img {
       height: 16px;
     }
+  }
+`;
+
+export const ProdutoMarketplaceButton = styled.button<{
+  $variant: "shopee" | "mercadoLivre";
+  $isSingle?: boolean;
+}>`
+  ${produtoMarketplaceControlStyles}
+  cursor: default;
+
+  &:disabled {
+    opacity: 1;
+  }
+`;
+
+export const ProdutoMarketplaceLink = styled.a<{
+  $variant: "shopee" | "mercadoLivre";
+  $isSingle?: boolean;
+}>`
+  ${produtoMarketplaceControlStyles}
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ $variant }) =>
+      $variant === "shopee" ? "#ed491b" : "#f4d910"};
+    transform: translateY(-1px);
   }
 `;
 
