@@ -2,112 +2,405 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { cores } from "../../styles";
 
-export const ProdutosToolbar = styled.div`
-  width: 100%;
+export const SidebarToggleBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
   flex-wrap: wrap;
 `;
 
-const controlBase = `
-  width: 100%;
-  height: 58px;
-  border: 1px solid ${cores.grayLight};
-  border-radius: 999px;
-  background-color: ${cores.white};
-  color: ${cores.black};
-  font-size: 16px;
-  outline: none;
+export const SidebarToggleButton = styled.button`
+  min-height: 52px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, ${cores.blueDark} 0%, ${cores.blueLight} 100%);
+  color: ${cores.white};
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 18px 36px rgba(34, 60, 159, 0.18);
   transition:
-    border-color 0.2s ease,
+    transform 0.2s ease,
     box-shadow 0.2s ease;
 
-  &:focus {
-    border-color: ${cores.gray};
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 22px 42px rgba(34, 60, 159, 0.22);
   }
 `;
 
-export const BuscaWrapper = styled.label`
+export const SidebarSummary = styled.div`
+  padding: 14px 18px;
+  border: 1px solid rgba(34, 60, 159, 0.1);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.92));
+  color: ${cores.black};
+  display: grid;
+  gap: 4px;
+  min-width: 190px;
+
+  strong {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  span {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: ${cores.blueDark};
+  }
+
+  small {
+    color: ${cores.gray};
+    font-size: 13px;
+    line-height: 1.5;
+  }
+`;
+
+export const CategoriasSidebarBackdrop = styled.button<{ $open: boolean }>`
+  position: fixed;
+  inset: 0;
+  border: none;
+  background-color: rgba(20, 28, 63, 0.32);
+  opacity: ${({ $open }) => ($open ? 1 : 0)};
+  pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
+  transition: opacity 0.24s ease;
+  z-index: 18;
+
+  @media (min-width: 901px) {
+    display: none;
+  }
+`;
+
+export const ProdutosLayout = styled.div<{ $sidebarOpen: boolean }>`
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: ${({ $sidebarOpen }) =>
+    $sidebarOpen ? "minmax(280px, 320px) minmax(0, 1fr)" : "0 minmax(0, 1fr)"};
+  gap: 24px;
+  align-items: start;
+  transition: grid-template-columns 0.28s ease;
+
+  @media (max-width: 900px) {
+    display: block;
+  }
+`;
+
+export const CategoriasSidebar = styled.aside<{ $open: boolean }>`
+  min-width: 0;
+
+  @media (min-width: 901px) {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    width: 100%;
+    height: fit-content;
+    opacity: ${({ $open }) => ($open ? 1 : 0)};
+    pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
+    transform: ${({ $open }) => ($open ? "translateX(0)" : "translateX(-18px)")};
+    transition:
+      opacity 0.24s ease,
+      transform 0.24s ease;
+  }
+
+  @media (max-width: 900px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(92vw, 400px);
+    z-index: 19;
+    transform: ${({ $open }) => ($open ? "translateX(0)" : "translateX(-105%)")};
+    transition: transform 0.28s ease;
+  }
+`;
+
+export const CategoriasSidebarPanel = styled.div`
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(34, 60, 159, 0.1);
+  border-radius: 28px;
+
+  @media (max-width: 900px) {
+    height: 100%;
+    max-height: none;
+    border-radius: 0 26px 26px 0;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    overflow-y: auto;
+  }
+`;
+
+export const CategoriasSidebarHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+`;
+
+export const CategoriasSidebarIntro = styled.div`
+  strong {
+    display: block;
+    color: ${cores.black};
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  @media (max-width: 900px) {
+    padding: 12px 14px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 12px 28px rgba(34, 60, 159, 0.08);
+  }
+`;
+
+export const CategoriasSidebarDescription = styled.p`
+  margin: 8px 0 0;
+  color: ${cores.gray};
+  font-size: 13px;
+  line-height: 1.55;
+`;
+
+export const CategoriasSidebarCloseButton = styled.button`
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: ${cores.blueDark};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  @media (min-width: 901px) {
+    display: none;
+  }
+`;
+
+export const FiltroGhostButton = styled.button`
+  min-height: 48px;
+  width: 100%;
+  padding: 0 18px;
+  border: 1px solid rgba(34, 60, 159, 0.14);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.88);
+  color: ${cores.blueDark};
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(37, 74, 206, 0.28);
+    box-shadow: 0 16px 32px rgba(34, 60, 159, 0.08);
+  }
+
+  &:disabled {
+    opacity: 0.48;
+    cursor: default;
+  }
+`;
+
+export const CategoriasGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+`;
+
+export const CategoriaCard = styled.label<{
+  $checked: boolean;
+  $disabled?: boolean;
+}>`
   position: relative;
-  width: min(100%, 340px);
-  display: block;
+  min-height: 42px;
+  padding: 6px 10px;
+  border: 1px solid
+    ${({ $checked }) =>
+      $checked ? "rgba(37, 74, 206, 0.18)" : "rgba(34, 60, 159, 0.08)"};
+  border-radius: 14px;
+  background:
+    ${({ $checked }) =>
+      $checked
+        ? "linear-gradient(135deg, rgba(34, 60, 159, 0.98), rgba(37, 74, 206, 0.94))"
+        : "linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 251, 255, 0.92))"};
+  color: ${({ $checked }) => ($checked ? cores.white : cores.black)};
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: ${({ $disabled }) => ($disabled ? "default" : "pointer")};
+  opacity: ${({ $disabled, $checked }) => ($disabled && !$checked ? 0.5 : 1)};
+  box-shadow: ${({ $checked }) =>
+    $checked
+      ? "0 16px 30px rgba(34, 60, 159, 0.18)"
+      : "0 10px 22px rgba(34, 60, 159, 0.05)"};
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
 
   input {
-    ${controlBase}
-    padding: 0 56px 0 18px;
-  }
-
-  svg {
     position: absolute;
-    top: 50%;
-    right: 18px;
-    width: 20px;
-    height: 20px;
-    color: ${cores.gray};
-    transform: translateY(-50%);
+    opacity: 0;
     pointer-events: none;
   }
 
-  @media (max-width: 640px) {
-    width: 100%;
+  &:hover {
+    transform: ${({ $disabled }) => ($disabled ? "none" : "translateY(-2px)")};
+    box-shadow: ${({ $checked, $disabled }) =>
+      $disabled
+        ? $checked
+          ? "0 16px 30px rgba(34, 60, 159, 0.18)"
+          : "0 10px 22px rgba(34, 60, 159, 0.05)"
+        : $checked
+          ? "0 18px 32px rgba(34, 60, 159, 0.22)"
+          : "0 14px 26px rgba(34, 60, 159, 0.08)"};
   }
 `;
 
-export const SelectWrapper = styled.label`
-  position: relative;
-  width: min(100%, 220px);
-  display: block;
-
-  select {
-    ${controlBase}
-    appearance: none;
-    cursor: pointer;
-    padding: 0 52px 0 18px;
-  }
+export const CategoriaCardIcon = styled.span<{
+  $checked: boolean;
+  $disabled?: boolean;
+}>`
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: ${({ $checked, $disabled }) =>
+    $checked
+      ? "rgba(255, 255, 255, 0.14)"
+      : $disabled
+        ? "rgba(34, 60, 159, 0.05)"
+        : "rgba(34, 60, 159, 0.08)"};
+  color: ${({ $checked, $disabled }) =>
+    $checked ? cores.white : $disabled ? cores.gray : cores.blueDark};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   svg {
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    width: 20px;
-    height: 20px;
-    color: ${cores.gray};
-    transform: translateY(-50%);
-    pointer-events: none;
+    width: 14px;
+    height: 14px;
   }
+`;
 
-  @media (max-width: 640px) {
-    width: 100%;
+export const CategoriaCardContent = styled.div`
+  min-width: 0;
+  flex: 1;
+
+  strong {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+`;
+
+export const CategoriaCardFooter = styled.div`
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+`;
+
+export const CategoriaCardCount = styled.small<{ $checked: boolean }>`
+  padding: 4px 8px;
+  border-radius: 999px;
+  background-color: ${({ $checked }) =>
+    $checked ? "rgba(255, 255, 255, 0.16)" : "rgba(34, 60, 159, 0.08)"};
+  color: ${({ $checked }) => ($checked ? cores.white : cores.blueDark)};
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+`;
+
+export const CategoriaCardHint = styled.span<{ $checked: boolean }>`
+  color: ${({ $checked }) => ($checked ? cores.white : cores.gray)};
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+`;
+
+export const ProdutosContent = styled.div`
+  min-width: 0;
 `;
 
 export const ProdutosGrid = styled.div`
-  margin-top: 44px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 28px 18px;
 
-  @media (max-width: 960px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   @media (max-width: 640px) {
-    grid-template-columns: 1fr;
     gap: 20px;
   }
 `;
 
-export const ProdutosEmpty = styled.p`
+export const ProdutosEmpty = styled.div`
   grid-column: 1 / -1;
-  margin: 0;
-  padding: 28px 24px;
-  border: 1px solid ${cores.grayLight};
-  border-radius: 20px;
-  color: ${cores.gray};
-  font-size: 16px;
+  padding: 34px 24px;
+  border: 1px solid rgba(34, 60, 159, 0.12);
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.94),
+    rgba(248, 251, 255, 0.92)
+  );
   text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+`;
+
+export const ProdutosEmptyTitle = styled.strong`
+  color: ${cores.black};
+  font-size: 20px;
+  line-height: 1.25;
+`;
+
+export const ProdutosEmptyText = styled.p`
+  margin: 0;
+  max-width: 54ch;
+  color: ${cores.gray};
+  font-size: 15px;
+  line-height: 1.7;
 `;
 
 export const ProdutoImageBox = styled.div`
@@ -143,7 +436,6 @@ export const ProdutoAction = styled(Link)`
   font-weight: 600;
   opacity: 0;
   pointer-events: none;
-  box-shadow: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
