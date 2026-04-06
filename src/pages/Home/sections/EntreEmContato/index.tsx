@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { homeContactSectionId } from "../../../../data/navigation";
 import { Container } from "../../../../styles";
 import ScrollReveal from "../../scrollReveal";
 import {
@@ -45,7 +46,7 @@ const EntreEmContato = () => {
     };
 
     return (
-        <Container>
+        <Container id={homeContactSectionId}>
             <ScrollReveal>
                 {({ revealProps, revealRef }) => (
                     <EntreEmContatoTitle ref={revealRef} {...revealProps}>

@@ -178,7 +178,7 @@ const PorqueNosEscolher = () => (
               vendas? Clique no botão abaixo e fale com um de nossos vendedores
               agora mesmo.
             </p>
-            <Button href="https://wa.me/5511993521508">Quero revender</Button>
+            <Button target="_blank" href="https://wa.me/5511993521508">Quero revender</Button>
           </PorqueNosEscolherCta>
         )}
       </ScrollReveal>

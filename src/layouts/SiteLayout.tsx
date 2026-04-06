@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import HeroPages from "../components/hero-pages";
-import { contactLink, navigationLinks } from "../data/navigation";
+import { navigationLinks } from "../data/navigation";
 import { getProdutoByChave } from "../pages/NossosProdutos/produtos";
 import { Container, GlobalCss } from "../styles";
 
@@ -30,9 +30,7 @@ const HeaderLayer = styled.div<{ $isOverlay: boolean; $useGradientBackground: bo
 
 const SiteLayout = () => {
   const location = useLocation();
-  const currentInternalPage = [...navigationLinks, contactLink].find(
-    ({ to }) => to !== "/" && to === location.pathname,
-  );
+  const currentInternalPage = navigationLinks.find(({ to }) => to !== "/" && to === location.pathname);
   const produtoPathPrefix = "/nossos-produtos/";
   const isProdutoDetalheRoute = location.pathname.startsWith(produtoPathPrefix);
   const produtoSlug = location.pathname.startsWith(produtoPathPrefix)
@@ -43,8 +41,25 @@ const SiteLayout = () => {
   const shouldShowHero = Boolean(heroTitle) && !isProdutoDetalheRoute;
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [location.pathname]);
+    if (!location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      return;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      const sectionId = decodeURIComponent(location.hash.slice(1));
+      const targetSection = document.getElementById(sectionId);
+
+      if (!targetSection) {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        return;
+      }
+
+      targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [location.hash, location.pathname]);
 
   return (
     <>

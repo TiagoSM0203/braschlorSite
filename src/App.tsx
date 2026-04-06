@@ -5,7 +5,6 @@ import QuemSomosPage from "./pages/QuemSomos";
 import NossosProdutosPage from "./pages/NossosProdutos";
 import ProdutoDetalhePage from "./pages/NossosProdutos/ProdutoDetalhe";
 import SejaParceiroPage from "./pages/SejaParceiro";
-import ContatoPage from "./pages/Contato";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         <Route path="/nossos-produtos" element={<NossosProdutosPage />} />
         <Route path="/nossos-produtos/:produtoId" element={<ProdutoDetalhePage />} />
         <Route path="/seja-parceiro" element={<SejaParceiroPage />} />
-        <Route path="/contato" element={<ContatoPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

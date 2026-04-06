@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { contactLink, navigationLinks } from "../../data/navigation";
+import { FaWhatsapp } from "react-icons/fa6";
+import { Link, useLocation } from "react-router-dom";
+import { headerSellerLink, navigationLinks } from "../../data/navigation";
 import {
-  HeaderBar,
-  Links,
-  LinkItem,
   DesktopButton,
-  MobileButton,
+  HeaderBar,
+  LinkItem,
+  Links,
   MenuButton,
+  MobileButton,
   Nav,
 } from "./styles";
 
@@ -16,6 +17,7 @@ import logo from "../../assets/imgs/logo_braschlor.png";
 const HEADER_COMPACT_BREAKPOINT = 1024;
 
 const Header = () => {
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCompactView, setIsCompactView] = useState(
     () => window.innerWidth <= HEADER_COMPACT_BREAKPOINT,
@@ -39,6 +41,26 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen((currentState) => !currentState);
   const closeMenu = () => setIsMenuOpen(false);
+  const isLinkActive = (to: string, end?: boolean) => {
+    const [pathname, hashFragment] = to.split("#");
+    const targetPathname = pathname || "/";
+
+    if (hashFragment) {
+      return (
+        location.pathname === targetPathname &&
+        location.hash === `#${hashFragment}`
+      );
+    }
+
+    if (end) {
+      return location.pathname === targetPathname && location.hash === "";
+    }
+
+    return (
+      location.pathname === targetPathname ||
+      location.pathname.startsWith(`${targetPathname}/`)
+    );
+  };
 
   return (
     <HeaderBar>
@@ -60,29 +82,46 @@ const Header = () => {
         </MenuButton>
       )}
 
-      <Nav $isMenuOpen={isMenuOpen} aria-label="Navegação principal">
+      <Nav $isMenuOpen={isMenuOpen} aria-label="Navega\u00E7\u00E3o principal">
         <Links>
           {navigationLinks.map(({ to, label, end }) => (
             <LinkItem key={to}>
-              <NavLink
+              <Link
                 to={to}
-                end={end}
                 onClick={closeMenu}
-                className={({ isActive }) => (isActive ? "is-active" : undefined)}
+                className={isLinkActive(to, end) ? "is-active" : undefined}
+                aria-current={isLinkActive(to, end) ? "page" : undefined}
               >
                 {label}
-              </NavLink>
+              </Link>
             </LinkItem>
           ))}
         </Links>
         {isCompactView && (
-          <MobileButton to={contactLink.to} onClick={closeMenu}>
-            {contactLink.label}
+          <MobileButton
+            href={headerSellerLink.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={headerSellerLink.label}
+            title={headerSellerLink.label}
+            onClick={closeMenu}
+          >
+            <FaWhatsapp aria-hidden="true" />
           </MobileButton>
         )}
       </Nav>
 
-      {!isCompactView && <DesktopButton to={contactLink.to}>{contactLink.label}</DesktopButton>}
+      {!isCompactView && (
+        <DesktopButton
+          href={headerSellerLink.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={headerSellerLink.label}
+          title={headerSellerLink.label}
+        >
+          <FaWhatsapp aria-hidden="true" />
+        </DesktopButton>
+      )}
     </HeaderBar>
   );
 };

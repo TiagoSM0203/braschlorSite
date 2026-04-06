@@ -4,10 +4,17 @@ export type NavigationLink = {
     end?: boolean;
 };
 
+export type ExternalActionLink = {
+    href: string;
+    label: string;
+};
+
+export const homeContactSectionId = "entre-em-contato";
+
 export const navigationLinks: NavigationLink[] = [
     {
         to: "/",
-        label: "Início",
+        label: "In\u00EDcio",
         end: true
     },
     {
@@ -21,10 +28,14 @@ export const navigationLinks: NavigationLink[] = [
     {
         to: "/seja-parceiro",
         label: "Seja nosso parceiro"
+    },
+    {
+        to: `/#${homeContactSectionId}`,
+        label: "Contato"
     }
 ];
 
-export const contactLink: NavigationLink = {
-    to: "/contato",
-    label: "Contato"
+export const headerSellerLink: ExternalActionLink = {
+    href: "https://wa.me/5511993521508",
+    label: "Falar com um vendedor"
 };

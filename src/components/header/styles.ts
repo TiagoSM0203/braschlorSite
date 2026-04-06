@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { cores } from "../../styles";
 
@@ -149,25 +148,56 @@ export const Button = styled.a`
     ${buttonStyles}
 `
 
-const RouterButton = styled(Link)`
-    ${buttonStyles}
-`
-
-export const DesktopButton = styled(RouterButton)`
+export const DesktopButton = styled(Button)`
     display: inline-flex;
+    width: 58px;
+    height: 58px;
+    padding: 0;
     margin-left: 0;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    svg {
+        font-size: 30px;
+    }
+
+    @media (max-width: 1100px) {
+        width: 52px;
+        height: 52px;
+
+        svg {
+            font-size: 28px;
+        }
+    }
 
     @media (max-width: 1024px) {
         display: none;
     }
 `
 
-export const MobileButton = styled(RouterButton)`
+export const MobileButton = styled(Button)`
     display: none;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    border-radius: 50%;
+    align-self: center;
+
+    svg {
+        font-size: 30px;
+    }
 
     @media (max-width: 1024px) {
         display: inline-flex;
-        width: 100%;
+    }
+
+    @media (max-width: 480px) {
+        width: 54px;
+        height: 54px;
+
+        svg {
+            font-size: 28px;
+        }
     }
 `
 
