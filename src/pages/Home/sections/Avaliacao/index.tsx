@@ -16,22 +16,22 @@ import {
 const avaliacoes = [
   {
     texto:
-      "Produto excelente. Minha roupa estava com mancha amarela, deixei de molho de um dia para o outro,a mancha saiu. Aprovadíssimo!",
+      "Produto excelente. Minha roupa estava com uma mancha amarela, deixei de molho de um dia para o outro e a mancha saiu. Aprovadíssimo!",
     autor: "Carla Mendes",
   },
   {
     texto:
-      "Nossa, esses produtos de vocês são demais. Meus clientes amaram. Quero mais desse lava roupas azul.",
+      "Nossa, os produtos de vocês são demais. Meus clientes amaram. Quero mais desse lava-roupas azul.",
     autor: "Luciene",
   },
   {
     texto:
-      "Não entendo nada de lavagem de roupas, comprei esse percarbonato sem botar muita fé, fiquei surpreso com o resultado! Vocês estão de parabéns, vou comprar mais!",
+      "Não entendo muito de lavagem de roupas, comprei esse percarbonato sem muita expectativa e fiquei surpreso com o resultado. Vocês estão de parabéns, vou comprar mais!",
     autor: "Bruno Carvalho",
   },
   {
     texto:
-      "Peguei alguns produtos pra testar, principalmente o percarbonato e o lava roupas azul. Vendeu mais rápido do que eu esperava. O pessoal gostou bastante! Parabéns!",
+      "Peguei alguns produtos para testar, principalmente o percarbonato e o lava-roupas azul. Vendeu mais rápido do que eu esperava. O pessoal gostou bastante. Parabéns!",
     autor: "Diego Martins",
   },
 ];
@@ -42,10 +42,10 @@ const Avaliacao = () => (
       <ScrollReveal>
         {({ revealProps, revealRef }) => (
           <AvaliacaoTitle ref={revealRef} {...revealProps}>
-            <h1>Confiança Construída na Prática</h1>
+            <h1>Confiança construída na prática</h1>
             <p>
-              Avaliações reais que comprovam a performance e a qualidade da nossa
-              linha.
+              Avaliações reais que comprovam a performance e a qualidade da
+              nossa linha.
             </p>
           </AvaliacaoTitle>
         )}
@@ -56,7 +56,7 @@ const Avaliacao = () => (
             <AvaliacaoMascot ref={revealRef} {...revealProps}>
               <picture>
                 <source media="(max-width: 1024px)" srcSet={mascotMobile} />
-                <img src={mascot} alt="Mascote apoiado nos cards de avaliacao" />
+                <img src={mascot} alt="Mascote apoiado nos cards de avaliação" />
               </picture>
             </AvaliacaoMascot>
           )}

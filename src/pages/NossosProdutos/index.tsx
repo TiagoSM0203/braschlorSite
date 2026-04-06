@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { IconType } from "react-icons";
+import { useSearchParams } from "react-router-dom";
 import {
   IoBusinessOutline,
   IoCarSportOutline,
@@ -73,7 +74,7 @@ const categoriaMeta: Record<
   Revenda: {
     icon: IoStorefrontOutline,
   },
-  "Para superficies": {
+  "Para superfícies": {
     icon: IoLayersOutline,
   },
   "Uso profissional": {
@@ -94,9 +95,7 @@ const quantidadePorCategoria = categoriasProduto.reduce(
 
 const NossosProdutosPage = () => {
   const [sidebarAberta, setSidebarAberta] = useState(false);
-  const [categoriasSelecionadas, setCategoriasSelecionadas] = useState<
-    CategoriaProduto[]
-  >([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 901px)");
@@ -113,22 +112,43 @@ const NossosProdutosPage = () => {
     };
   }, []);
 
+  const categoriasNaUrl = searchParams.getAll("categoria");
+  const categoriasSelecionadas = categoriasProduto.filter((categoria) =>
+    categoriasNaUrl.includes(categoria),
+  );
   const semCategoriasSelecionadas = categoriasSelecionadas.length === 0;
 
-  const alternarCategoria = (categoria: CategoriaProduto) => {
-    setCategoriasSelecionadas((categoriasAtuais) => {
-      if (categoriasAtuais.includes(categoria)) {
-        return categoriasAtuais.filter((item) => item !== categoria);
-      }
+  const atualizarCategoriasSelecionadas = (
+    proximasCategorias: CategoriaProduto[],
+  ) => {
+    const proximosSearchParams = new URLSearchParams(searchParams);
 
-      return categoriasProduto.filter(
-        (item) => item === categoria || categoriasAtuais.includes(item),
-      );
+    proximosSearchParams.delete("categoria");
+    proximasCategorias.forEach((categoria) => {
+      proximosSearchParams.append("categoria", categoria);
     });
+
+    setSearchParams(proximosSearchParams);
+  };
+
+  const alternarCategoria = (categoria: CategoriaProduto) => {
+    if (categoriasSelecionadas.includes(categoria)) {
+      atualizarCategoriasSelecionadas(
+        categoriasSelecionadas.filter((item) => item !== categoria),
+      );
+
+      return;
+    }
+
+    atualizarCategoriasSelecionadas(
+      categoriasProduto.filter(
+        (item) => item === categoria || categoriasSelecionadas.includes(item),
+      ),
+    );
   };
 
   const mostrarTodasCategorias = () => {
-    setCategoriasSelecionadas([]);
+    atualizarCategoriasSelecionadas([]);
   };
 
   const produtosFiltrados = semCategoriasSelecionadas
@@ -153,7 +173,7 @@ const NossosProdutosPage = () => {
 
           <SidebarSummary>
             <strong>{produtosFiltrados.length}</strong>
-            <span>produtos visiveis</span>
+            <span>produtos visíveis</span>
             <small>
               {semCategoriasSelecionadas
                 ? "Todas as categorias"
@@ -265,7 +285,7 @@ const NossosProdutosPage = () => {
                 <ProdutosEmpty>
                   <ProdutosEmptyTitle>Nenhum produto encontrado.</ProdutosEmptyTitle>
                   <ProdutosEmptyText>
-                    Selecione outra categoria para visualizar mais itens do catalogo.
+                    Selecione outra categoria para visualizar mais itens do catálogo.
                   </ProdutosEmptyText>
                 </ProdutosEmpty>
               )}

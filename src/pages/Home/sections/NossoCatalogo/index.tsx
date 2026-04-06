@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import cloro from "../../../../assets/imgs/cloro.png";
 import detergentes from "../../../../assets/imgs/detergentes.png";
 import limpezaPesada from "../../../../assets/imgs/limpeza-pesada.png";
@@ -8,6 +9,10 @@ import { Button } from "../../../../components/header/styles";
 import { Container } from "../../../../styles";
 import ScrollReveal from "../../scrollReveal";
 import {
+  getNossosProdutosPath,
+  type CategoriaProduto,
+} from "../../../NossosProdutos/produtos";
+import {
   ButtonDiv,
   CatalogoCard,
   CatalogoCards,
@@ -17,41 +22,47 @@ import {
 
 const catalogoItems = [
   {
+    categoria: "Detergentes" as CategoriaProduto,
     image: detergentes,
     alt: "Linha detergentes",
     title: "Detergentes",
     description: "Detergente neutro e detergente cristal.",
   },
   {
+    categoria: "Linha Cloro" as CategoriaProduto,
     image: cloro,
     alt: "Linha cloro",
     title: "Linha cloro",
-    description: "Agua sanitaria, cloro liquido 6% e cloro gel.",
+    description: "Água sanitária, cloro líquido 6% e cloro em gel.",
   },
   {
+    categoria: "Limpeza pesada" as CategoriaProduto,
     image: limpezaPesada,
     alt: "Linha limpeza pesada",
     title: "Limpeza pesada",
-    description: "Sabao querosene, Branquinho e multiuso.",
+    description: "Sabão querosene, Branquinho e multiuso.",
   },
   {
+    categoria: "Desinfetantes" as CategoriaProduto,
     image: desinfetantes,
     alt: "Linha desinfetantes",
     title: "Desinfetantes",
-    description: "Casa limpa, lavanda, marine, talco e flores do campo.",
+    description: "Casa Limpa, Lavanda, Marine, Talco e Flores do Campo.",
   },
   {
+    categoria: "Lavanderia" as CategoriaProduto,
     image: lavanderia,
     alt: "Linha lavanderia",
     title: "Lavanderia",
     description:
-      "Lava roupas liquido, amaciante, percarbonato de sodio e alvejante azul.",
+      "Lava-roupas líquido, amaciante, percarbonato de sódio e alvejante sem cloro.",
   },
   {
+    categoria: "Linha automotiva" as CategoriaProduto,
     image: automotivo,
     alt: "Linha automotiva",
     title: "Linha automotiva",
-    description: "Lava autos, limpa pneu gel e silicone gel.",
+    description: "Lava-autos, limpa pneu em gel e silicone em gel.",
   },
 ];
 
@@ -61,7 +72,7 @@ const NossoCatalogo = () => (
       <ScrollReveal>
         {({ revealProps, revealRef }) => (
           <CatalogoTitle ref={revealRef} {...revealProps}>
-            <h1>Nosso Catalogo</h1>
+            <h1>Nosso catálogo</h1>
             <p>
               Escolha uma categoria e veja os produtos ideais para sua rotina ou
               para revender.
@@ -71,8 +82,8 @@ const NossoCatalogo = () => (
       </ScrollReveal>
 
       <CatalogoCards>
-        {catalogoItems.map(({ image, alt, title, description }, index) => (
-          <a href="#" key={title}>
+        {catalogoItems.map(({ categoria, image, alt, title, description }, index) => (
+          <Link to={getNossosProdutosPath([categoria])} key={title}>
             <ScrollReveal delay={index * 90}>
               {({ revealProps, revealRef }) => (
                 <CatalogoCard ref={revealRef} {...revealProps}>
@@ -82,14 +93,14 @@ const NossoCatalogo = () => (
                 </CatalogoCard>
               )}
             </ScrollReveal>
-          </a>
+          </Link>
         ))}
       </CatalogoCards>
 
       <ScrollReveal delay={180} variant="scale">
         {({ revealProps, revealRef }) => (
           <ButtonDiv ref={revealRef} {...revealProps}>
-            <Button href="#">Ver catalogo completo</Button>
+            <Button href={getNossosProdutosPath()}>Ver catálogo completo</Button>
           </ButtonDiv>
         )}
       </ScrollReveal>

@@ -7,7 +7,7 @@ export type NavigationLink = {
 export const navigationLinks: NavigationLink[] = [
     {
         to: "/",
-        label: "Inicio",
+        label: "Início",
         end: true
     },
     {

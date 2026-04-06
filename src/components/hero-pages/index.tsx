@@ -19,7 +19,7 @@ const HeroPages = ({ title }: HeroPagesProps) => (
             <HeroPagesContent>
                 <HeroPagesTitle>{title}</HeroPagesTitle>
                 <HeroPagesBreadcrumb>
-                    <HeroPagesHomeLink to="/">Inicio</HeroPagesHomeLink>
+                    <HeroPagesHomeLink to="/">Início</HeroPagesHomeLink>
                     <HeroPagesDot>&bull;</HeroPagesDot>
                     <HeroPagesCurrent>{title}</HeroPagesCurrent>
                 </HeroPagesBreadcrumb>

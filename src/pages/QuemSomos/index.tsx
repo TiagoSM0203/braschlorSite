@@ -23,23 +23,23 @@ import {
   QuerRevenderSection,
 } from "./styles";
 
-const historyTitle = "Nossa hist\u00f3ria";
+const historyTitle = "Nossa história";
 
 const historyParagraphs = [
-  "A Braschlor foi fundada em 2006, por\u00e9m consolidada em 2010 quando incrementou domissanit\u00e1rios e mat\u00e9rias primas a seu portf\u00f3lio de produtos, dando inicio a um projeto de ind\u00fastria e distribui\u00e7\u00e3o de mat\u00e9rias-primas.",
-  "Experi\u00eancia e dedica\u00e7\u00e3o para promover a satisfa\u00e7\u00e3o de nossos clientes com o compromisso de aliar qu\u00edmica a natureza, sempre em busca de inova\u00e7\u00e3o com desenvolvimento sustent\u00e1vel.",
-  "Atuamos em todo o territ\u00f3rio Nacional com garantia de entrega, qualidade e pre\u00e7os competitivos.",
+  "A Braschlor foi fundada em 2006 e consolidou sua atuação em 2010, quando ampliou o portfólio com domissanitários e matérias-primas, fortalecendo seu projeto de indústria e distribuição.",
+  "Nossa trajetória é marcada por experiência, dedicação e pelo compromisso de unir química e natureza com responsabilidade, sempre em busca de inovação e desenvolvimento sustentável.",
+  "Atuamos em todo o território nacional com foco em qualidade, regularidade no abastecimento e preços competitivos.",
 ];
 
-const chemistryTitle = "Qu\u00edmica aliada \u00e0 natureza";
+const chemistryTitle = "Química aliada à natureza";
 const chemistryText =
-  "Unimos alta performance na limpeza com uso consciente no dia a dia. Mais rendimento, mais resultado e mais equil\u00edbrio em cada produto.";
+  "Unimos alta performance na limpeza com uso consciente no dia a dia. Mais rendimento, mais resultado e mais equilíbrio em cada produto.";
 const qualityText =
-  "Trabalhamos com padr\u00e3o e controle em cada etapa para garantir produtos eficientes, com alto rendimento e resultado real no uso di\u00e1rio.";
+  "Trabalhamos com padrão e controle em cada etapa para garantir produtos eficientes, com alto rendimento e resultado real no uso diário.";
 const brandsText =
-  "A Braschlor atua com duas marcas que representam o nosso padr\u00e3o de qualidade e compromisso com resultado: Branquinho e Lune Blanche. Ambas fazem parte do nosso portf\u00f3lio de produtos, desenvolvidos com foco em alto rendimento, efici\u00eancia e confian\u00e7a no uso di\u00e1rio. Seja para consumo pr\u00f3prio ou para revenda, nossas marcas entregam solu\u00e7\u00f5es completas para diferentes necessidades de limpeza, sempre mantendo o cuidado e o desempenho que fazem a diferen\u00e7a.";
+  "A Braschlor atua com duas marcas que representam o nosso padrão de qualidade e compromisso com resultado: Branquinho e Lune Blanche. Ambas fazem parte do nosso portfólio, desenvolvido com foco em rendimento, eficiência e confiança no uso diário. Seja para consumo próprio ou para revenda, nossas marcas entregam soluções completas para diferentes necessidades de limpeza.";
 const resellerText =
-  "Fale com a nossa equipe e escolha os produtos ideais para voc\u00ea. Clique em um dos bot\u00f5es abaixo ou chame no e-mail da empresa para atendimento r\u00e1pido.";
+  "Fale com a nossa equipe e escolha os produtos ideais para você. Use um dos botões abaixo ou entre em contato pelo e-mail da empresa para um atendimento rápido.";
 
 const QuemSomosPage = () => {
   const [isHistoriaExpanded, setIsHistoriaExpanded] = useState(false);
@@ -128,8 +128,8 @@ const QuemSomosPage = () => {
               </TitleAndSubtitle>
               <p className="texto">{resellerText}</p>
               <QuerRevenderButtons>
-                <Button>Quero revender</Button>
-                <a className="botao" href="#">
+                <Button href="https://wa.me/5511993521508">Quero revender</Button>
+                <a className="botao" href="/nossos-produtos">
                   Comprar agora
                 </a>
               </QuerRevenderButtons>

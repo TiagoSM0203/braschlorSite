@@ -72,7 +72,7 @@ const renderMarketplaceControl = (
       disabled
       $variant={variant}
       $isSingle={isSingle}
-      aria-label={`Disponivel em ${label}`}
+      aria-label={`Disponível em ${label}`}
     >
       {content}
     </ProdutoMarketplaceButton>

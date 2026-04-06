@@ -41,11 +41,11 @@ type QuickLink =
         label: string;
         href: string;
         external: true;
-    }
+    };
 
 const quickLinks: QuickLink[] = [
     {
-        label: "Inicio",
+        label: "Início",
         to: "/"
     },
     {
@@ -108,8 +108,8 @@ const Footer = () => (
                     </FooterColumn>
 
                     <FooterColumn>
-                        <FooterHeading>Links rapidos</FooterHeading>
-                        <nav aria-label="Links rapidos do rodape">
+                        <FooterHeading>Links rápidos</FooterHeading>
+                        <nav aria-label="Links rápidos do rodapé">
                             <QuickLinksList>
                                 {quickLinks.map((item) => (
                                     <li key={item.label}>
@@ -152,7 +152,7 @@ const Footer = () => (
                                     <FaLocationDot />
                                 </ContactIconBox>
                                 <ContactText>
-                                    R. Canario, 143 - Laranjeiras, Caieiras - SP, 07745-015
+                                    R. Canário, 143 - Laranjeiras, Caieiras - SP, 07745-015
                                 </ContactText>
                             </ContactItem>
                         </ContactList>
@@ -164,7 +164,7 @@ const Footer = () => (
                 <FooterBottom>
                     <FaRegCopyright />
                     <p>
-                        Braschlor produtos quimicos. Todos os direitos reservados. CNPJ: <strong>08.319.371/0001-42</strong>
+                        Braschlor Produtos Químicos. Todos os direitos reservados. CNPJ: <strong>08.319.371/0001-42</strong>
                     </p>
                 </FooterBottom>
             </FooterInner>

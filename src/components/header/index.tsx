@@ -60,7 +60,7 @@ const Header = () => {
         </MenuButton>
       )}
 
-      <Nav $isMenuOpen={isMenuOpen} aria-label="Navegacao principal">
+      <Nav $isMenuOpen={isMenuOpen} aria-label="Navegação principal">
         <Links>
           {navigationLinks.map(({ to, label, end }) => (
             <LinkItem key={to}>

@@ -43,7 +43,7 @@ const Hero = () => (
           </p>
           <ButtonDiv>
             <Button href="https://wa.me/5511993521508">Quero revender</Button>
-            <a className="botao" href="#">Comprar agora</a>
+            <a className="botao" href="/nossos-produtos">Comprar agora</a>
           </ButtonDiv>
         </HeroCard>
       </Container>

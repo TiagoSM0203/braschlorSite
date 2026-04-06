@@ -26,40 +26,46 @@ import sabao from "../../../../assets/imgs/sabao-azul.png";
 import aguaSanitaria from "../../../../assets/imgs/agua-sanitaria.png";
 import querosene from "../../../../assets/imgs/querosene.png";
 import silicone from "../../../../assets/imgs/silicone.png";
+import { getProdutoPath } from "../../../NossosProdutos/produtos";
 
 const maisPopularesItems = [
   {
+    slug: "percarbonato",
     image: percarbonato,
-    alt: "Percarbonato de sodio",
-    title: "Percarbonato de sodio",
+    alt: "Percarbonato de sódio",
+    title: "Percarbonato de sódio",
     description:
-      "Branqueador poderoso para roupas brancas e coloridas.",
+      "Auxilia na remoção de manchas e reforça a lavagem de roupas brancas e coloridas.",
   },
   {
+    slug: "sabao-azul",
     image: sabao,
-    alt: "Lava roupas liquido azul",
-    title: "Lava roupas liquido azul",
-    description: "Limpeza profunda com perfume duradouro e alto rendimento.",
+    alt: "Lava-roupas líquido azul",
+    title: "Lava-roupas líquido azul",
+    description: "Lavagem eficiente para o dia a dia, com boa espuma, perfume e rendimento.",
   },
   {
+    slug: "agua-sanitaria-5l-2l",
     image: aguaSanitaria,
-    alt: "Agua sanitaria",
-    title: "Agua sanitaria",
-    description: "Branqueia, desinfeta e ajuda a eliminar odores no dia a dia.",
+    alt: "Água sanitária",
+    title: "Água sanitária",
+    description: "Branqueia, higieniza e ajuda a eliminar odores na rotina de limpeza.",
   },
   {
+    slug: "querosene-5l-2l",
     image: querosene,
-    alt: "Sabao querosene",
-    title: "Sabao querosene",
+    alt: "Sabão querosene",
+    title: "Sabão querosene",
     description:
-      "Ideal para limpeza pesada, gordura dificil e brilho renovado.",
+      "Indicado para limpeza pesada de pisos e superfícies com sujeira mais impregnada.",
   },
   {
+    slug: "silicone-g-p",
     image: silicone,
-    alt: "Silicone gel",
-    title: "Silicone gel",
+    alt: "Silicone em gel",
+    title: "Silicone em gel",
     description:
-      "Brilho intenso para paineis e plasticos com acabamento duradouro.",
+      "Acabamento com brilho para painéis, plásticos e borrachas do veículo.",
   },
 ];
 
@@ -103,13 +109,14 @@ const MaisPopulares = () => {
       emblaApi.off("select", updateCarouselState);
     };
   }, [emblaApi]);
+
   return (
     <MaisPopularesSection>
       <Container>
         <ScrollReveal>
           {({ revealProps, revealRef }) => (
             <MaisPopularesTitle ref={revealRef} {...revealProps}>
-              <h1>Mais Populares</h1>
+              <h1>Mais populares</h1>
               <p>Alta performance e rendimento: os favoritos dos nossos clientes.</p>
             </MaisPopularesTitle>
           )}
@@ -120,7 +127,7 @@ const MaisPopulares = () => {
         <MaisPopularesCarouselShell>
           <MaisPopularesCarouselViewport ref={emblaRef}>
             <MaisPopularesCarouselTrack>
-              {maisPopularesItems.map(({ image, alt, title, description }, index) => (
+              {maisPopularesItems.map(({ image, alt, title, description, slug }, index) => (
                 <MaisPopularesCarouselSlide key={title}>
                   <ScrollReveal delay={(index % 3) * 90}>
                     {({ revealProps, revealRef }) => (
@@ -136,7 +143,9 @@ const MaisPopulares = () => {
                           </MaisPopularesCardText>
                         </MaisPopularesCardContent>
 
-                        <MaisPopularesAction href="#">Veja mais</MaisPopularesAction>
+                        <MaisPopularesAction href={getProdutoPath(slug)}>
+                          Ver produto
+                        </MaisPopularesAction>
                       </MaisPopularesCard>
                     )}
                   </ScrollReveal>
@@ -182,7 +191,7 @@ const MaisPopulares = () => {
                     autoplay.current.reset();
                   }}
                   disabled={!canScrollNext}
-                  aria-label="Proximo slide"
+                  aria-label="Próximo slide"
                 >
                   <span aria-hidden="true">&gt;</span>
                 </MaisPopularesControlButton>

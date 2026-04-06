@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { Container } from "../../../../styles"
-import ScrollReveal from "../../scrollReveal"
+import { useState } from "react";
+import { Container } from "../../../../styles";
+import ScrollReveal from "../../scrollReveal";
 import {
     EntreEmContatoSection,
     EntreEmContatoTitle,
@@ -12,37 +12,37 @@ import {
     PerguntaItem,
     Perguntas,
     PerguntasLista
-} from "./styles"
+} from "./styles";
 
 const perguntasFrequentes = [
     {
         pergunta: "Como faço para ser revendedor?",
-        resposta: "Entre em contato pelo formulário ao lado ou pelo nosso numero de whatsapp: (11)99352-1508 ou Telefone: 4442-2403 para falar com um de nossos vendedores."
+        resposta: "Entre em contato pelo formulário ao lado ou pelo nosso WhatsApp: (11) 99352-1508. Se preferir, ligue para (11) 4442-2403 e fale com um de nossos vendedores."
     },
     {
         pergunta: "Como faço para comprar seus produtos para uso próprio?",
-        resposta: "Nossos produtos estão disponiveis para compra online nos marketplaces: Mercado Livre e Shopee! Acesse Nossos Produtos e saiba mais!"
+        resposta: "Nossos produtos estão disponíveis para compra on-line em marketplaces como Mercado Livre e Shopee. Acesse a página Nossos Produtos para conferir as opções."
     },
     {
         pergunta: "Posso misturar água sanitária com outros produtos?",
-        resposta: "Não é recomendado. A mistura pode causar reações perigosas e causar danos a sua saúde durante o uso."
+        resposta: "Não é recomendado. A mistura pode causar reações perigosas e trazer riscos à sua saúde durante o uso."
     },
     {
         pergunta: "O que fazer se o produto cair no olho ou na pele?",
-        resposta: "Lave a região imediatamente com água em abundância e procure orientação médica se houver irritação persistente. Em caso de emergência, ligue para o centro de intoxicações (CEATOX) 0800-722-6001."
+        resposta: "Lave a região imediatamente com água em abundância e procure orientação médica se houver irritação persistente. Em caso de emergência, ligue para o Centro de Intoxicações (CEATOX): 0800-722-6001."
     },
     {
         pergunta: "Vocês têm loja física?",
-        resposta: "Sim, nosso loja física com preço direto da fábrica esta localizada na R. Canário, 143 - Laranjeiras, Caieiras - SP, 07745-015. Venha nos visitar!"
+        resposta: "Sim. Nossa loja física, com preço direto da fábrica, está localizada na R. Canário, 143 - Laranjeiras, Caieiras - SP, 07745-015. Venha nos visitar."
     }
-]
+];
 
 const EntreEmContato = () => {
-    const [perguntaAberta, setPerguntaAberta] = useState<number | null>(0)
+    const [perguntaAberta, setPerguntaAberta] = useState<number | null>(0);
 
     const alternarPergunta = (index: number) => {
-        setPerguntaAberta((atual) => (atual === index ? null : index))
-    }
+        setPerguntaAberta((atual) => (atual === index ? null : index));
+    };
 
     return (
         <Container>
@@ -60,7 +60,7 @@ const EntreEmContato = () => {
                             <h2>Perguntas frequentes</h2>
                             <PerguntasLista>
                                 {perguntasFrequentes.map((item, index) => {
-                                    const aberta = perguntaAberta === index
+                                    const aberta = perguntaAberta === index;
 
                                     return (
                                         <PerguntaItem key={item.pergunta} $aberta={aberta}>
@@ -79,7 +79,7 @@ const EntreEmContato = () => {
                                                 </p>
                                             )}
                                         </PerguntaItem>
-                                    )
+                                    );
                                 })}
                             </PerguntasLista>
                         </Perguntas>
@@ -104,7 +104,7 @@ const EntreEmContato = () => {
                                     <label htmlFor="email">E-mail</label>
                                     <input type="email" name="email" id="email" />
                                     <label htmlFor="telefone">Telefone</label>
-                                    <input type="number" name="telefone" id="telefone" />
+                                    <input type="tel" name="telefone" id="telefone" />
                                     <label htmlFor="mensagem">Mensagem</label>
                                     <textarea name="mensagem" id="mensagem"></textarea>
                                 </FaleConoscoForm>
@@ -114,7 +114,7 @@ const EntreEmContato = () => {
                 </ScrollReveal>
             </EntreEmContatoSection>
         </Container>
-    )
-}
+    );
+};
 
-export default EntreEmContato
+export default EntreEmContato;

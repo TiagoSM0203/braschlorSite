@@ -78,6 +78,80 @@ export const ProdutoDetalheHighlightsCard = styled.div`
   }
 `;
 
+export const ProdutoDetalheInfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 18px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ProdutoDetalheInfoCard = styled(ProdutoDetalheHighlightsCard)`
+  height: 100%;
+`;
+
+export const ProdutoDetalheFragranciasGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ProdutoDetalheFragranciaCard = styled.div`
+  min-height: 68px;
+  padding: 16px 18px;
+  border: 1px solid rgba(37, 74, 206, 0.18);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(37, 74, 206, 0.06) 0%,
+    rgba(140, 198, 75, 0.08) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: ${cores.black};
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+`;
+
+export const ProdutoDetalheProfessionalCard = styled(ProdutoDetalheHighlightsCard)`
+  border-color: rgba(37, 74, 206, 0.24);
+  background: linear-gradient(
+    180deg,
+    rgba(37, 74, 206, 0.08) 0%,
+    rgba(140, 198, 75, 0.08) 100%
+  );
+
+  strong {
+    display: block;
+    color: ${cores.blueDark};
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-top: 10px;
+    color: ${cores.black};
+    font-size: 15px;
+    line-height: 1.6;
+  }
+`;
+
 export const ProdutoDetalheHighlightsList = styled.ul`
   display: grid;
   gap: 14px;
