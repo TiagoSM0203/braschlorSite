@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { cores } from "../../styles";
 
-export const ProdutoDetalheLayout = styled.div`
+export const ProdutoDetalheLayout = styled.div<{ $hasMedia: boolean }>`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+  grid-template-columns: ${({ $hasMedia }) =>
+    $hasMedia ? "minmax(0, 1fr) minmax(320px, 440px)" : "minmax(0, 1fr)"};
   gap: 48px;
   align-items: start;
 

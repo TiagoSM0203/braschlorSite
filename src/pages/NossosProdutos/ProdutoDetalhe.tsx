@@ -49,42 +49,51 @@ const ProdutoDetalhePage = () => {
 
   const fragrancias = fragranciasPorProduto[produto.chave] ?? [];
   const isProdutoProfissional20L = produto.chave.startsWith("bb-");
+  const temConteudoLateral =
+    Boolean(produto.imagem) ||
+    Boolean(produto.marketplaces && Object.keys(produto.marketplaces).length > 0) ||
+    isProdutoProfissional20L ||
+    fragrancias.length > 0;
 
   return (
     <PageSection>
       <Container>
-        <ProdutoDetalheLayout>
-          <ProdutoDetalheMediaColumn>
-            <ProdutoDetalheMedia>
-              <img src={produto.imagem} alt={produto.nome} />
-            </ProdutoDetalheMedia>
-            <ProdutoMarketplaces
-              produto={produto}
-              caption="Compre este produto on-line em nossos marketplaces."
-            />
-            {isProdutoProfissional20L ? (
-              <ProdutoDetalheProfessionalCard>
-                <strong>Uso profissional</strong>
-                <p>
-                  Produto exclusivamente para uso profissional, fornecido em
-                  bombona de 20 L para operações de maior volume, reposição e
-                  abastecimento contínuo.
-                </p>
-              </ProdutoDetalheProfessionalCard>
-            ) : null}
-            {fragrancias.length > 0 ? (
-              <ProdutoDetalheHighlightsCard>
-                <h2>Fragrâncias disponíveis</h2>
-                <ProdutoDetalheFragranciasGrid>
-                  {fragrancias.map((fragrancia) => (
-                    <ProdutoDetalheFragranciaCard key={fragrancia}>
-                      {fragrancia}
-                    </ProdutoDetalheFragranciaCard>
-                  ))}
-                </ProdutoDetalheFragranciasGrid>
-              </ProdutoDetalheHighlightsCard>
-            ) : null}
-          </ProdutoDetalheMediaColumn>
+        <ProdutoDetalheLayout $hasMedia={temConteudoLateral}>
+          {temConteudoLateral ? (
+            <ProdutoDetalheMediaColumn>
+              {produto.imagem ? (
+                <ProdutoDetalheMedia>
+                  <img src={produto.imagem} alt={produto.nome} />
+                </ProdutoDetalheMedia>
+              ) : null}
+              <ProdutoMarketplaces
+                produto={produto}
+                caption="Compre este produto on-line em nossos marketplaces."
+              />
+              {isProdutoProfissional20L ? (
+                <ProdutoDetalheProfessionalCard>
+                  <strong>Uso profissional</strong>
+                  <p>
+                    Produto exclusivamente para uso profissional, fornecido em
+                    bombona de 20 L para operações de maior volume, reposição e
+                    abastecimento contínuo.
+                  </p>
+                </ProdutoDetalheProfessionalCard>
+              ) : null}
+              {fragrancias.length > 0 ? (
+                <ProdutoDetalheHighlightsCard>
+                  <h2>Fragrâncias disponíveis</h2>
+                  <ProdutoDetalheFragranciasGrid>
+                    {fragrancias.map((fragrancia) => (
+                      <ProdutoDetalheFragranciaCard key={fragrancia}>
+                        {fragrancia}
+                      </ProdutoDetalheFragranciaCard>
+                    ))}
+                  </ProdutoDetalheFragranciasGrid>
+                </ProdutoDetalheHighlightsCard>
+              ) : null}
+            </ProdutoDetalheMediaColumn>
+          ) : null}
 
           <ProdutoDetalheContent>
             <div>

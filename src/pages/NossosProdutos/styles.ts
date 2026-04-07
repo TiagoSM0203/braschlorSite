@@ -459,6 +459,72 @@ export const ProdutoNome = styled.h3`
   transition: color 0.2s ease;
 `;
 
+export const ProdutoTextoCard = styled.article`
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid rgba(34, 60, 159, 0.12);
+  border-radius: 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(248, 251, 255, 0.96) 100%
+  );
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  box-shadow: 0 16px 34px rgba(34, 60, 159, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-2px);
+    border-color: rgba(37, 74, 206, 0.18);
+    box-shadow: 0 20px 38px rgba(34, 60, 159, 0.12);
+  }
+`;
+
+export const ProdutoTextoTitulo = styled.h3`
+  color: ${cores.black};
+  font-size: 22px;
+  line-height: 1.2;
+`;
+
+export const ProdutoTextoDescricao = styled.p`
+  margin: 0;
+  color: ${cores.gray};
+  font-size: 15px;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+`;
+
+export const ProdutoTextoAction = styled(Link)`
+  min-height: 46px;
+  width: fit-content;
+  padding: 0 18px;
+  border-radius: 14px;
+  background-color: ${cores.blueDark};
+  color: ${cores.white};
+  font-size: 15px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    background-color: ${cores.blueLight};
+  }
+`;
+
 export const ProdutoMarketplaceSection = styled.div`
   margin-top: 10px;
   display: grid;

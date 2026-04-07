@@ -42,6 +42,10 @@ import {
   ProdutosEmptyTitle,
   ProdutoImageBox,
   ProdutoNome,
+  ProdutoTextoAction,
+  ProdutoTextoCard,
+  ProdutoTextoDescricao,
+  ProdutoTextoTitulo,
   ProdutosGrid,
   ProdutosLayout,
   SidebarSummary,
@@ -79,6 +83,9 @@ const categoriaMeta: Record<
   },
   "Uso profissional": {
     icon: IoBusinessOutline,
+  },
+  "Matérias-primas": {
+    icon: IoFlaskOutline,
   },
 };
 
@@ -267,6 +274,18 @@ const NossosProdutosPage = () => {
               {produtosFiltrados.length > 0 ? (
                 produtosFiltrados.map((produto) => {
                   const { chave, nome, imagem } = produto;
+
+                  if (!imagem) {
+                    return (
+                      <ProdutoTextoCard key={chave}>
+                        <ProdutoTextoTitulo>{nome}</ProdutoTextoTitulo>
+                        <ProdutoTextoDescricao>{produto.descricao}</ProdutoTextoDescricao>
+                        <ProdutoTextoAction to={getProdutoPath(chave)}>
+                          Ver informações
+                        </ProdutoTextoAction>
+                      </ProdutoTextoCard>
+                    );
+                  }
 
                   return (
                     <ProdutoCard key={chave}>

@@ -1,3 +1,5 @@
+import { materiasPrimas } from "./materiasPrimas";
+
 const categoriasProduto = [
   "Detergentes",
   "Linha Cloro",
@@ -8,6 +10,7 @@ const categoriasProduto = [
   "Revenda",
   "Para superfícies",
   "Uso profissional",
+  "Matérias-primas",
 ] as const;
 
 export type CategoriaProduto = (typeof categoriasProduto)[number];
@@ -25,7 +28,7 @@ export type ProdutoInfoSection = {
 export type Produto = {
   chave: string;
   nome: string;
-  imagem: string;
+  imagem?: string;
   categoria: CategoriaProduto;
   descricao: string;
   destaques: string[];
@@ -36,7 +39,10 @@ export type Produto = {
 type ProdutoMetadata = Omit<Produto, "chave" | "imagem">;
 
 const imagensProdutos = import.meta.glob(
-  "../../assets/imgs/produtos-imgs/*.png",
+  [
+    "../../assets/imgs/produtos-imgs/*.png",
+    "../../assets/imgs/produtos-imgs/*.jpeg",
+  ],
   {
     eager: true,
     import: "default",
@@ -109,7 +115,12 @@ const criarProdutoBaseConcentrado = (
     informacoes,
   );
 
-const produtosOcultos = new Set(["bombona", "bombona1"]);
+const produtosOcultos = new Set([
+  "bombona",
+  "bombona1",
+  "pop-madeira",
+  "vassoura-pelo",
+]);
 
 const produtosMetadata: Record<string, ProdutoMetadata> = {
   "agua-sanitaria-5l-2l": criarProduto(
@@ -826,6 +837,49 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
         "https://www.mercadolivre.com.br/limpador-multiuso-5l-limpa-diversas-superficies/p/MLB64420230?pdp_filters=item_id:MLB4426707071",
     },
   ),
+  "esponja-de-aco": criarProduto(
+    "Esponja de aço Sampa Clean",
+    "Revenda",
+    "Esponja de aço indicada para remover sujeiras mais difíceis e dar brilho em utensílios e superfícies resistentes da rotina doméstica ou comercial leve.",
+    [
+      "Ajuda a remover gordura aderida e resíduos mais difíceis.",
+      "Pode ser usada para dar brilho em panelas, talheres, vidros e azulejos resistentes.",
+      "É um item clássico de apoio mecânico para a limpeza da cozinha e do lar.",
+    ],
+    [
+      "Panelas, grelhas, talheres, vidros, louças e azulejos compatíveis com esse tipo de limpeza.",
+      "Situações em que a sujeira pede maior ação mecânica junto com detergente ou sabão.",
+    ],
+    [
+      "Referências oficiais da categoria destacam limpeza de superfícies, brilho e remoção de sujeiras mais difíceis.",
+      "Evite o uso em superfícies delicadas, polidas, antiaderentes, pintadas ou que possam riscar.",
+      "Não utilize em locais por onde passe corrente elétrica e mantenha o produto seco após o uso quando possível.",
+    ],
+    {
+      shopee: "https://shopee.com.br/product/1738012223/58207489229/",
+      mercadoLivre:
+        "https://www.mercadolivre.com.br/esponja-de-aco-inoxidavel-sampa-clean-c-10-unidades/up/MLBU3741408887?pdp_filters=item_id:MLB6187724500",
+    },
+  ),
+  "gel-limpador-sanitario": criarProduto(
+    "Gel limpador sanitário Sampa Clean",
+    "Revenda",
+    "Limpador sanitário em gel indicado para higienização do vaso sanitário e de áreas do banheiro, com aplicação mais controlada em cantos, bordas e superfícies verticais.",
+    [
+      "A textura em gel ajuda na aderência e no controle da aplicação.",
+      "Bom apoio para limpeza localizada do banheiro e de pontos com sujeira acumulada.",
+      "Pode ajudar a reduzir desperdício em comparação com fórmulas muito fluidas.",
+    ],
+    [
+      "Vaso sanitário, bordas internas, pias, ralos, azulejos, boxes e áreas compatíveis com a fórmula do rótulo.",
+      "Limpezas em que a aplicação direcionada facilita alcançar cantos e regiões de difícil acesso.",
+    ],
+    [
+      "Referências oficiais da categoria destacam uso em vasos sanitários, pias, ralos, azulejos, boxes, banheiras e rejuntes compatíveis.",
+      "Produtos sanitários em gel costumam oferecer maior controle na aplicação por escorrerem menos que versões líquidas muito finas.",
+      "Use luvas, respeite o tempo de ação indicado na embalagem e enxágue conforme o modo de uso do rótulo.",
+    ],
+  ),
   naftalina: criarProduto(
     "Naftalina cartela Sampa Clean",
     "Revenda",
@@ -1225,7 +1279,7 @@ const formatarNomePadrao = (chaveProduto: string) =>
     })
     .join(" ");
 
-export const produtos: Produto[] = Object.entries(imagensProdutos)
+const produtosComImagem: Produto[] = Object.entries(imagensProdutos)
   .map(([caminhoArquivo, imagem]) => {
     const chave = formatarChaveProduto(caminhoArquivo);
     const metadata = produtosMetadata[chave];
@@ -1243,7 +1297,9 @@ export const produtos: Produto[] = Object.entries(imagensProdutos)
       marketplaces: metadata?.marketplaces,
     };
   })
-  .filter((produto) => !produtosOcultos.has(produto.chave))
+  .filter((produto) => !produtosOcultos.has(produto.chave));
+
+export const produtos: Produto[] = [...produtosComImagem, ...materiasPrimas]
   .sort((produtoA, produtoB) => {
     const ordemA =
       ordemCategorias.get(produtoA.categoria) ?? Number.MAX_SAFE_INTEGER;

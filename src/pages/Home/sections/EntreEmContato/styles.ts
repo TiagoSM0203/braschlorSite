@@ -130,6 +130,57 @@ export const FaleConoscoForm = styled.form`
     }
 `
 
+export const FaleConoscoActions = styled.div`
+    display: grid;
+    gap: 12px;
+    margin-top: 8px;
+`
+
+export const FaleConoscoButton = styled.button`
+    min-height: 52px;
+    border: none;
+    border-radius: 14px;
+    background-color: ${cores.blueDark};
+    color: ${cores.white};
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+
+    &:hover:not(:disabled) {
+        transform: translateY(-1px);
+        background-color: ${cores.blueLight};
+    }
+
+    &:disabled {
+        opacity: 0.72;
+        cursor: default;
+    }
+`
+
+export const FaleConoscoStatus = styled.p<{
+    $status: "idle" | "loading" | "success" | "error";
+}>`
+    min-height: 24px;
+    margin: 0;
+    color: ${({ $status }) => {
+        if ($status === "success") {
+            return cores.green;
+        }
+
+        if ($status === "error") {
+            return "#c0392b";
+        }
+
+        return cores.gray;
+    }};
+    font-size: 14px;
+    line-height: 1.5;
+`
+
 export const NomeSobrenome = styled.div`
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { homeContactSectionId } from "../../../../data/navigation";
 import { Container } from "../../../../styles";
 import ScrollReveal from "../../scrollReveal";
 import {
+    FaleConoscoActions,
+    FaleConoscoButton,
     EntreEmContatoSection,
     EntreEmContatoTitle,
     FaleConoscoColuna,
     FaleConosco,
     FaleConoscoForm,
+    FaleConoscoStatus,
     NomeSobrenome,
     PerguntaBotao,
     PerguntaItem,
     Perguntas,
     PerguntasLista
 } from "./styles";
+
+const EMAILJS_API_URL = "https://api.emailjs.com/api/v1.0/email/send-form";
+const EMAILJS_SERVICE_ID = "service_xotmwsv";
+const EMAILJS_TEMPLATE_ID = "template_m8ach7r";
+const EMAILJS_PUBLIC_KEY = "IY6j-Fhch5_fAaHaA";
+
+type FormStatus = "idle" | "loading" | "success" | "error";
 
 const perguntasFrequentes = [
     {
@@ -40,9 +50,43 @@ const perguntasFrequentes = [
 
 const EntreEmContato = () => {
     const [perguntaAberta, setPerguntaAberta] = useState<number | null>(0);
+    const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
     const alternarPergunta = (index: number) => {
         setPerguntaAberta((atual) => (atual === index ? null : index));
+    };
+
+    const handleFormChange = () => {
+        setFormStatus((atual) => (atual === "idle" ? atual : "idle"));
+    };
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        formData.append("service_id", EMAILJS_SERVICE_ID);
+        formData.append("template_id", EMAILJS_TEMPLATE_ID);
+        formData.append("user_id", EMAILJS_PUBLIC_KEY);
+
+        setFormStatus("loading");
+
+        try {
+            const response = await fetch(EMAILJS_API_URL, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error("Falha ao enviar contato");
+            }
+
+            form.reset();
+            setFormStatus("success");
+        } catch {
+            setFormStatus("error");
+        }
     };
 
     return (
@@ -91,23 +135,39 @@ const EntreEmContato = () => {
                         <FaleConoscoColuna ref={revealRef} {...revealProps}>
                             <h2>Fale conosco</h2>
                             <FaleConosco>
-                                <FaleConoscoForm action="form">
+                                <FaleConoscoForm onSubmit={handleSubmit} onChange={handleFormChange}>
                                     <NomeSobrenome>
                                         <div>
                                             <label htmlFor="nome">Nome</label>
-                                            <input type="text" name="nome" id="nome" />
+                                            <input type="text" name="nome" id="nome" required />
                                         </div>
                                         <div>
                                             <label htmlFor="sobrenome">Sobrenome</label>
-                                            <input type="text" name="sobrenome" id="sobrenome" />
+                                            <input type="text" name="sobrenome" id="sobrenome" required />
                                         </div>
                                     </NomeSobrenome>
                                     <label htmlFor="email">E-mail</label>
-                                    <input type="email" name="email" id="email" />
+                                    <input type="email" name="email" id="email" required />
                                     <label htmlFor="telefone">Telefone</label>
                                     <input type="tel" name="telefone" id="telefone" />
                                     <label htmlFor="mensagem">Mensagem</label>
-                                    <textarea name="mensagem" id="mensagem"></textarea>
+                                    <textarea name="mensagem" id="mensagem" required></textarea>
+                                    <FaleConoscoActions>
+                                        <FaleConoscoButton type="submit" disabled={formStatus === "loading"}>
+                                            {formStatus === "loading" ? "Enviando..." : "Enviar mensagem"}
+                                        </FaleConoscoButton>
+                                        <FaleConoscoStatus
+                                            $status={formStatus}
+                                            aria-live="polite"
+                                        >
+                                            {formStatus === "success"
+                                                ? "Mensagem enviada com sucesso. Em breve entraremos em contato."
+                                                : null}
+                                            {formStatus === "error"
+                                                ? "Não foi possível enviar agora. Tente novamente em instantes."
+                                                : null}
+                                        </FaleConoscoStatus>
+                                    </FaleConoscoActions>
                                 </FaleConoscoForm>
                             </FaleConosco>
                         </FaleConoscoColuna>
