@@ -30,7 +30,7 @@ export const HeroSection = styled.section`
     }
 `;
 
-const HeroBackgroundVideo = styled.video`
+const HeroBackgroundMedia = `
     position: absolute;
     inset: 0;
     width: 100%;
@@ -41,12 +41,16 @@ const HeroBackgroundVideo = styled.video`
     z-index: 0;
 `;
 
+const HeroBackgroundVideo = styled.video`
+    ${HeroBackgroundMedia}
+`;
+
+export const HeroBackgroundImage = styled.img`
+    ${HeroBackgroundMedia}
+`;
+
 export const DesktopHeroVideo = styled(HeroBackgroundVideo)`
     display: block;
-
-    @media (max-width: 900px) {
-        display: none;
-    }
 `;
 
 export const MobileHeroVideo = styled(HeroBackgroundVideo)`
@@ -150,6 +154,13 @@ export const HeroCard = styled.div`
     @media (max-width: 1100px) {
         max-width: 640px;
 
+        > * {
+            opacity: 1;
+            animation: none;
+            transform: none;
+            will-change: auto;
+        }
+
         h1 {
             font-size: 24px;
             max-width: 640px;
@@ -187,6 +198,7 @@ export const HeroCard = styled.div`
         span {
             font-size: clamp(60px, 11vw, 82px);
             line-height: 0.88;
+            margin-top: 10px;
         }
 
         p {

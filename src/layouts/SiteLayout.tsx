@@ -5,7 +5,6 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import HeroPages from "../components/hero-pages";
 import { navigationLinks } from "../data/navigation";
-import { getProdutoByChave } from "../pages/NossosProdutos/produtos";
 import { Container, GlobalCss } from "../styles";
 
 const heroGradient =
@@ -33,11 +32,7 @@ const SiteLayout = () => {
   const currentInternalPage = navigationLinks.find(({ to }) => to !== "/" && to === location.pathname);
   const produtoPathPrefix = "/nossos-produtos/";
   const isProdutoDetalheRoute = location.pathname.startsWith(produtoPathPrefix);
-  const produtoSlug = location.pathname.startsWith(produtoPathPrefix)
-    ? location.pathname.slice(produtoPathPrefix.length).split("/")[0]
-    : undefined;
-  const produtoAtual = getProdutoByChave(produtoSlug);
-  const heroTitle = currentInternalPage?.label ?? produtoAtual?.nome;
+  const heroTitle = currentInternalPage?.label;
   const shouldShowHero = Boolean(heroTitle) && !isProdutoDetalheRoute;
 
   useEffect(() => {

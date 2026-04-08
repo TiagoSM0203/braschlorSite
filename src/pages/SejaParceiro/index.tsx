@@ -1,13 +1,13 @@
-import fabricaEco from "../../assets/imgs/eco-fabrica.png";
-import seloQualidade from "../../assets/imgs/distintivo.png";
-import margem from "../../assets/imgs/margem.png";
-import produtosLimpeza from "../../assets/imgs/produtos-de-limpeza.png";
-import entregaRapida from "../../assets/imgs/entrega-rapida.png";
-import atendimento from "../../assets/imgs/suporte-ao-cliente.png";
-import mascoteWhatsApp from "../../assets/imgs/mascote-whats-app.png";
-import mascoteNegociando from "../../assets/imgs/mascote-negociando.png";
-import mascoteProdutos from "../../assets/imgs/mascote-produtos.png";
-import mascoteCaminhao from "../../assets/imgs/mascote-caminhao.png";
+﻿import fabricaEco from "../../assets/imgs/eco-fabrica.webp";
+import seloQualidade from "../../assets/imgs/distintivo.webp";
+import margem from "../../assets/imgs/margem.webp";
+import produtosLimpeza from "../../assets/imgs/produtos-de-limpeza.webp";
+import entregaRapida from "../../assets/imgs/entrega-rapida.webp";
+import atendimento from "../../assets/imgs/suporte-ao-cliente.webp";
+import mascoteWhatsApp from "../../assets/imgs/mascote-whats-app.webp";
+import mascoteNegociando from "../../assets/imgs/mascote-negociando.webp";
+import mascoteProdutos from "../../assets/imgs/mascote-produtos.webp";
+import mascoteCaminhao from "../../assets/imgs/mascote-caminhao.webp";
 import { Container, PageSection } from "../../styles";
 import ScrollReveal from "../Home/scrollReveal";
 import {
@@ -145,7 +145,7 @@ const SejaParceiroPage = () => (
           <ScrollReveal key={text} delay={(index % 3) * 90}>
             {({ revealProps, revealRef }) => (
               <PorqueRevenderCard ref={revealRef} {...revealProps}>
-                <img src={image} alt={alt} />
+                <img src={image} alt={alt} loading="lazy" decoding="async" />
                 <p>{text}</p>
               </PorqueRevenderCard>
             )}
@@ -244,7 +244,7 @@ const SejaParceiroPage = () => (
                     </ComoFuncionaNumber>
 
                     <ComoFuncionaStepImage $reverse={reverse} $size={imageSize}>
-                      <img src={image} alt={alt} />
+                      <img src={image} alt={alt} loading="lazy" decoding="async" />
                     </ComoFuncionaStepImage>
 
                     <ComoFuncionaStepContent $reverse={reverse} $tone={tone}>
@@ -303,3 +303,4 @@ const SejaParceiroPage = () => (
 );
 
 export default SejaParceiroPage;
+

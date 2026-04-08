@@ -1,7 +1,7 @@
 import { FaStar } from "react-icons/fa6";
 import { Container } from "../../../../styles";
-import mascotMobile from "../../../../assets/imgs/mascote-bracos-cruzados.png";
-import mascot from "../../../../assets/imgs/mascote-encostado.png";
+import mascotMobile from "../../../../assets/imgs/mascote-bracos-cruzados.webp";
+import mascot from "../../../../assets/imgs/mascote-encostado.webp";
 import ScrollReveal from "../../scrollReveal";
 import {
   AvaliacaoBody,
@@ -56,7 +56,12 @@ const Avaliacao = () => (
             <AvaliacaoMascot ref={revealRef} {...revealProps}>
               <picture>
                 <source media="(max-width: 1024px)" srcSet={mascotMobile} />
-                <img src={mascot} alt="Mascote apoiado nos cards de avaliação" />
+                <img
+                  src={mascot}
+                  alt="Mascote apoiado nos cards de avaliação"
+                  loading="lazy"
+                  decoding="async"
+                />
               </picture>
             </AvaliacaoMascot>
           )}
@@ -84,3 +89,4 @@ const Avaliacao = () => (
 );
 
 export default Avaliacao;
+

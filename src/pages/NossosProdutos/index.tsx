@@ -87,6 +87,9 @@ const categoriaMeta: Record<
   "Matérias-primas": {
     icon: IoFlaskOutline,
   },
+  Fragrâncias: {
+    icon: IoSparklesOutline,
+  },
 };
 
 const quantidadePorCategoria = categoriasProduto.reduce(
@@ -290,7 +293,7 @@ const NossosProdutosPage = () => {
                   return (
                     <ProdutoCard key={chave}>
                       <ProdutoImageBox>
-                        <img src={imagem} alt={nome} />
+                        <img src={imagem} alt={nome} loading="lazy" decoding="async" />
                         <ProdutoAction to={getProdutoPath(chave)}>
                           Ver produto
                         </ProdutoAction>

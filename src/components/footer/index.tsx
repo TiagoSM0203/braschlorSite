@@ -1,5 +1,5 @@
 import { Container } from "../../styles";
-import logo from "../../assets/imgs/logo_braschlor.png";
+import logo from "../../assets/imgs/logo_braschlor.webp";
 import {
     FaFacebookF,
     FaInstagram,
@@ -173,3 +173,4 @@ const Footer = () => (
 );
 
 export default Footer;
+

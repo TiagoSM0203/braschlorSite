@@ -1,5 +1,5 @@
-import mercadoLivre from "../../assets/imgs/mercado-livre.png";
-import shopee from "../../assets/imgs/shopee.png";
+import mercadoLivre from "../../assets/imgs/mercado-livre.webp";
+import shopee from "../../assets/imgs/shopee.webp";
 import { IoLinkOutline } from "react-icons/io5";
 import type { Produto, ProdutoMarketplaceNome, ProdutoMarketplaceValue } from "./produtos";
 import {
@@ -109,3 +109,4 @@ const ProdutoMarketplaces = ({ produto, caption }: ProdutoMarketplacesProps) => 
 };
 
 export default ProdutoMarketplaces;
+

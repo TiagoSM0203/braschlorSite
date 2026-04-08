@@ -36,6 +36,7 @@ const fragranciasPorProduto: Partial<Record<string, string[]>> = {
     "Violeta",
     "Jasmim",
     "Floral",
+    "Bambu",
   ],
 };
 
@@ -63,7 +64,12 @@ const ProdutoDetalhePage = () => {
             <ProdutoDetalheMediaColumn>
               {produto.imagem ? (
                 <ProdutoDetalheMedia>
-                  <img src={produto.imagem} alt={produto.nome} />
+                  <img
+                    src={produto.imagem}
+                    alt={produto.nome}
+                    loading="eager"
+                    decoding="async"
+                  />
                 </ProdutoDetalheMedia>
               ) : null}
               <ProdutoMarketplaces

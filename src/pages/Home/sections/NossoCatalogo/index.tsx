@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import cloro from "../../../../assets/imgs/cloro.png";
-import detergentes from "../../../../assets/imgs/detergentes.png";
-import limpezaPesada from "../../../../assets/imgs/limpeza-pesada.png";
-import desinfetantes from "../../../../assets/imgs/desinfetante.png";
-import lavanderia from "../../../../assets/imgs/lavanderia.png";
-import automotivo from "../../../../assets/imgs/automotivo.png";
+import cloro from "../../../../assets/imgs/cloro.webp";
+import detergentes from "../../../../assets/imgs/detergentes.webp";
+import limpezaPesada from "../../../../assets/imgs/limpeza-pesada.webp";
+import desinfetantes from "../../../../assets/imgs/desinfetante.webp";
+import lavanderia from "../../../../assets/imgs/lavanderia.webp";
+import automotivo from "../../../../assets/imgs/automotivo.webp";
 import { Button } from "../../../../components/header/styles";
 import { Container } from "../../../../styles";
 import ScrollReveal from "../../scrollReveal";
 import {
   getNossosProdutosPath,
   type CategoriaProduto,
-} from "../../../NossosProdutos/produtos";
+} from "../../../NossosProdutos/catalogo";
 import {
   ButtonDiv,
   CatalogoCard,
@@ -87,7 +87,7 @@ const NossoCatalogo = () => (
             <ScrollReveal delay={index * 90}>
               {({ revealProps, revealRef }) => (
                 <CatalogoCard ref={revealRef} {...revealProps}>
-                  <img src={image} alt={alt} />
+                  <img src={image} alt={alt} loading="lazy" decoding="async" />
                   <h2>{title}</h2>
                   <p>{description}</p>
                 </CatalogoCard>
@@ -100,7 +100,9 @@ const NossoCatalogo = () => (
       <ScrollReveal delay={180} variant="scale">
         {({ revealProps, revealRef }) => (
           <ButtonDiv ref={revealRef} {...revealProps}>
-            <Button href={getNossosProdutosPath()}>Ver catálogo completo</Button>
+            <Button as={Link} to={getNossosProdutosPath()}>
+              Ver catálogo completo
+            </Button>
           </ButtonDiv>
         )}
       </ScrollReveal>
@@ -109,3 +111,4 @@ const NossoCatalogo = () => (
 );
 
 export default NossoCatalogo;
+

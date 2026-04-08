@@ -1,19 +1,7 @@
+import { categoriasProduto } from "./catalogo";
+import type { CategoriaProduto } from "./catalogo";
+import { fragrancias } from "./fragrancias";
 import { materiasPrimas } from "./materiasPrimas";
-
-const categoriasProduto = [
-  "Detergentes",
-  "Linha Cloro",
-  "Limpeza pesada",
-  "Desinfetantes",
-  "Lavanderia",
-  "Linha automotiva",
-  "Revenda",
-  "Para superfícies",
-  "Uso profissional",
-  "Matérias-primas",
-] as const;
-
-export type CategoriaProduto = (typeof categoriasProduto)[number];
 export type ProdutoMarketplaceNome = "shopee" | "mercadoLivre";
 export type ProdutoMarketplaceValue = true | string;
 export type ProdutoMarketplaces = Partial<
@@ -40,7 +28,7 @@ type ProdutoMetadata = Omit<Produto, "chave" | "imagem">;
 
 const imagensProdutos = import.meta.glob(
   [
-    "../../assets/imgs/produtos-imgs/*.png",
+    "../../assets/imgs/produtos-imgs/*.webp",
     "../../assets/imgs/produtos-imgs/*.jpeg",
   ],
   {
@@ -118,6 +106,7 @@ const criarProdutoBaseConcentrado = (
 const produtosOcultos = new Set([
   "bombona",
   "bombona1",
+  "esfregao",
   "pop-madeira",
   "vassoura-pelo",
 ]);
@@ -538,19 +527,6 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
     [
       "Use na dosagem adequada ao nível de gordura.",
       "Enxágue normalmente após a aplicação.",
-    ],
-  ),
-  esfregao: criarProduto(
-    "Esfregão Esfrega Forte",
-    "Revenda",
-    "Esfregão indicado para reforçar a limpeza de pisos e superfícies que exigem maior atrito para remoção de sujeira aderida.",
-    [
-      "Apoia limpezas mais pesadas.",
-      "Bom para reforçar a ação manual em pisos e áreas laváveis.",
-    ],
-    [
-      "Pisos, áreas externas e superfícies com sujeira mais aderida.",
-      "Limpezas em que o atrito faz diferença no resultado final.",
     ],
   ),
   "esponja-mu": criarProduto(
@@ -1299,7 +1275,11 @@ const produtosComImagem: Produto[] = Object.entries(imagensProdutos)
   })
   .filter((produto) => !produtosOcultos.has(produto.chave));
 
-export const produtos: Produto[] = [...produtosComImagem, ...materiasPrimas]
+export const produtos: Produto[] = [
+  ...produtosComImagem,
+  ...materiasPrimas,
+  ...fragrancias,
+]
   .sort((produtoA, produtoB) => {
     const ordemA =
       ordemCategorias.get(produtoA.categoria) ?? Number.MAX_SAFE_INTEGER;
@@ -1315,23 +1295,6 @@ export const produtos: Produto[] = [...produtosComImagem, ...materiasPrimas]
 
 export const getProdutoByChave = (chave?: string) =>
   produtos.find((produto) => produto.chave === chave);
+export { categoriasProduto, getNossosProdutosPath, getProdutoPath } from "./catalogo";
+export type { CategoriaProduto } from "./catalogo";
 
-export const getNossosProdutosPath = (
-  categoriasSelecionadas: CategoriaProduto[] = [],
-) => {
-  if (categoriasSelecionadas.length === 0) {
-    return "/nossos-produtos";
-  }
-
-  const searchParams = new URLSearchParams();
-
-  categoriasSelecionadas.forEach((categoria) => {
-    searchParams.append("categoria", categoria);
-  });
-
-  return `/nossos-produtos?${searchParams.toString()}`;
-};
-
-export const getProdutoPath = (chave: string) => `/nossos-produtos/${chave}`;
-
-export { categoriasProduto };

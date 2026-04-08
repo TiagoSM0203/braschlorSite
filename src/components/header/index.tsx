@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 import { headerSellerLink, navigationLinks } from "../../data/navigation";
@@ -12,7 +12,7 @@ import {
   Nav,
 } from "./styles";
 
-import logo from "../../assets/imgs/logo_braschlor.png";
+import logo from "../../assets/imgs/logo_braschlor.webp";
 
 const HEADER_COMPACT_BREAKPOINT = 1024;
 
@@ -65,7 +65,13 @@ const Header = () => {
   return (
     <HeaderBar>
       <Link to="/" aria-label="Braschlor" onClick={closeMenu}>
-        <img src={logo} alt="Braschlor Logo" />
+        <img
+          src={logo}
+          alt="Braschlor Logo"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
       </Link>
 
       {isCompactView && (
@@ -127,3 +133,4 @@ const Header = () => {
 };
 
 export default Header;
+

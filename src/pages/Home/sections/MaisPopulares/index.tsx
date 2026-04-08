@@ -21,12 +21,12 @@ import {
   MaisPopularesSection,
   MaisPopularesTitle,
 } from "./styles";
-import percarbonato from "../../../../assets/imgs/percarbonato.png";
-import sabao from "../../../../assets/imgs/sabao-azul.png";
-import aguaSanitaria from "../../../../assets/imgs/agua-sanitaria.png";
-import querosene from "../../../../assets/imgs/querosene.png";
-import silicone from "../../../../assets/imgs/silicone.png";
-import { getProdutoPath } from "../../../NossosProdutos/produtos";
+import percarbonato from "../../../../assets/imgs/percarbonato.webp";
+import sabao from "../../../../assets/imgs/sabao-azul.webp";
+import aguaSanitaria from "../../../../assets/imgs/agua-sanitaria.webp";
+import querosene from "../../../../assets/imgs/querosene.webp";
+import silicone from "../../../../assets/imgs/silicone.webp";
+import { getProdutoPath } from "../../../NossosProdutos/catalogo";
 
 const maisPopularesItems = [
   {
@@ -134,7 +134,7 @@ const MaisPopulares = () => {
                       <MaisPopularesCard ref={revealRef} {...revealProps}>
                         <MaisPopularesCardContent>
                           <MaisPopularesCardImage>
-                            <img src={image} alt={alt} />
+                            <img src={image} alt={alt} loading="lazy" decoding="async" />
                           </MaisPopularesCardImage>
 
                           <MaisPopularesCardText>
@@ -205,3 +205,4 @@ const MaisPopulares = () => {
 };
 
 export default MaisPopulares;
+

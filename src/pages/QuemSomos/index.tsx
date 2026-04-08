@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { FaRegEnvelope } from "react-icons/fa6";
-import marcas from "../../assets/imgs/mascote-marcas.png";
-import nossaHistoria from "../../assets/imgs/nossa-historia.png";
-import qualidade from "../../assets/imgs/mascote-qualidade.png";
-import reciclagem from "../../assets/imgs/mascote-reciclando.png";
+import { Link } from "react-router-dom";
+import marcas from "../../assets/imgs/mascote-marcas.webp";
+import nossaHistoria from "../../assets/imgs/nossa-historia.webp";
+import qualidade from "../../assets/imgs/mascote-qualidade.webp";
+import reciclagem from "../../assets/imgs/mascote-reciclando.webp";
 import { Button } from "../../components/header/styles";
 import { Container, TitleAndSubtitle } from "../../styles";
 import { AvaliacaoSection } from "../Home/sections/Avaliacao/styles";
@@ -58,7 +59,12 @@ const QuemSomosPage = () => {
         <ScrollReveal delay={80}>
           {({ revealProps, revealRef }) => (
             <NossaHistoriaContent ref={revealRef} {...revealProps}>
-              <img src={nossaHistoria} alt={historyTitle} />
+              <img
+                src={nossaHistoria}
+                alt={historyTitle}
+                loading="eager"
+                decoding="async"
+              />
               <NossaHistoriaText>
                 <p>{historyParagraphs[0]}</p>
                 <NossaHistoriaExtra $isExpanded={isHistoriaExpanded}>
@@ -86,7 +92,7 @@ const QuemSomosPage = () => {
           <QualidadeReciclagemSection ref={revealRef} {...revealProps}>
             <Container>
               <QualidadeReciclagem>
-                <img src={reciclagem} alt="Mascote reciclando" />
+                <img src={reciclagem} alt="Mascote reciclando" loading="lazy" decoding="async" />
                 <div>
                   <h4>{chemistryTitle}</h4>
                   <p>{chemistryText}</p>
@@ -94,7 +100,7 @@ const QuemSomosPage = () => {
               </QualidadeReciclagem>
 
               <QualidadeReciclagem>
-                <img src={qualidade} alt="Mascote qualidade" />
+                <img src={qualidade} alt="Mascote qualidade" loading="lazy" decoding="async" />
                 <div>
                   <h4>Qualidade</h4>
                   <p>{qualityText}</p>
@@ -113,7 +119,7 @@ const QuemSomosPage = () => {
                 <h1>Nossas marcas</h1>
                 <MascasContent>
                   <p>{brandsText}</p>
-                  <img src={marcas} alt="Nossas marcas" />
+                  <img src={marcas} alt="Nossas marcas" loading="lazy" decoding="async" />
                 </MascasContent>
               </MascasSection>
             )}
@@ -129,9 +135,9 @@ const QuemSomosPage = () => {
               <p className="texto">{resellerText}</p>
               <QuerRevenderButtons>
                 <Button href="https://wa.me/5511993521508">Quero revender</Button>
-                <a className="botao" href="/nossos-produtos">
+                <Link className="botao" to="/nossos-produtos">
                   Comprar agora
-                </a>
+                </Link>
               </QuerRevenderButtons>
               <EmailDiv>
                 <FaRegEnvelope />
@@ -146,3 +152,4 @@ const QuemSomosPage = () => {
 };
 
 export default QuemSomosPage;
+

@@ -1,19 +1,19 @@
 import { Container } from "../../../../styles";
-import industria from "../../../../assets/imgs/mascote-industria.png";
-import rendimento from "../../../../assets/imgs/rendimento.png";
-import entrega from "../../../../assets/imgs/entrega.png";
-import atendimento from "../../../../assets/imgs/escritorio.png";
-import estoque from "../../../../assets/imgs/estoque.png";
-import linha from "../../../../assets/imgs/linha.png";
-import revenda from "../../../../assets/imgs/venda.png";
+import industria from "../../../../assets/imgs/mascote-industria.webp";
+import rendimento from "../../../../assets/imgs/rendimento.webp";
+import entrega from "../../../../assets/imgs/entrega.webp";
+import atendimento from "../../../../assets/imgs/escritorio.webp";
+import estoque from "../../../../assets/imgs/estoque.webp";
+import linha from "../../../../assets/imgs/linha.webp";
+import revenda from "../../../../assets/imgs/venda.webp";
 
-import numero1 from "../../../../assets/imgs/numero1.png";
-import numero2 from "../../../../assets/imgs/numero2.png";
-import numero3 from "../../../../assets/imgs/numero3.png";
-import numero4 from "../../../../assets/imgs/numero4.png";
-import numero5 from "../../../../assets/imgs/numero5.png";
-import numero6 from "../../../../assets/imgs/numero6.png";
-import numero7 from "../../../../assets/imgs/numero7.png";
+import numero1 from "../../../../assets/imgs/numero1.webp";
+import numero2 from "../../../../assets/imgs/numero2.webp";
+import numero3 from "../../../../assets/imgs/numero3.webp";
+import numero4 from "../../../../assets/imgs/numero4.webp";
+import numero5 from "../../../../assets/imgs/numero5.webp";
+import numero6 from "../../../../assets/imgs/numero6.webp";
+import numero7 from "../../../../assets/imgs/numero7.webp";
 import ScrollReveal from "../../scrollReveal";
 
 import {
@@ -43,10 +43,10 @@ const PorqueNosEscolher = () => (
       <ScrollReveal variant="left">
         {({ revealProps, revealRef }) => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
-            <img src={industria} alt="Mascote Indústria" />
+            <img src={industria} alt="Mascote Indústria" loading="lazy" decoding="async" />
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero1} alt="Número 1" />
+                <img className="number" src={numero1} alt="Número 1" loading="lazy" decoding="async" />
                 <h2>Direto da indústria</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Produção própria e padrão de qualidade.</h4>
@@ -64,7 +64,7 @@ const PorqueNosEscolher = () => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero2} alt="Número 2" />
+                <img className="number" src={numero2} alt="Número 2" loading="lazy" decoding="async" />
                 <h2>Alto rendimento</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Mais produto, mais resultado.</h4>
@@ -73,17 +73,17 @@ const PorqueNosEscolher = () => (
                 limpeza eficiente sem desperdício e com excelente performance.
               </p>
             </PorqueNosEscolherContent>
-            <img src={rendimento} alt="Mascote rendimento" />
+            <img src={rendimento} alt="Mascote rendimento" loading="lazy" decoding="async" />
           </PorqueNosEscolherCard>
         )}
       </ScrollReveal>
       <ScrollReveal variant="left">
         {({ revealProps, revealRef }) => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
-            <img src={entrega} alt="Mascote entrega" />
+            <img src={entrega} alt="Mascote entrega" loading="lazy" decoding="async" />
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero3} alt="Número 3" />
+                <img className="number" src={numero3} alt="Número 3" loading="lazy" decoding="async" />
                 <h2>Entrega rápida e eficiente</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Entrega com qualidade e mais segurança.</h4>
@@ -101,7 +101,7 @@ const PorqueNosEscolher = () => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero4} alt="Número 4" />
+                <img className="number" src={numero4} alt="Número 4" loading="lazy" decoding="async" />
                 <h2>Atendimento rápido</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Você fala direto com quem resolve.</h4>
@@ -111,17 +111,17 @@ const PorqueNosEscolher = () => (
                 segurança.
               </p>
             </PorqueNosEscolherContent>
-            <img src={atendimento} alt="Mascote atendimento" />
+            <img src={atendimento} alt="Mascote atendimento" loading="lazy" decoding="async" />
           </PorqueNosEscolherCard>
         )}
       </ScrollReveal>
       <ScrollReveal variant="left">
         {({ revealProps, revealRef }) => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
-            <img src={linha} alt="Mascote linha completa" />
+            <img src={linha} alt="Mascote linha completa" loading="lazy" decoding="async" />
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero5} alt="Número 5" />
+                <img className="number" src={numero5} alt="Número 5" loading="lazy" decoding="async" />
                 <h2>Linha completa</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Produtos para toda necessidade.</h4>
@@ -138,7 +138,7 @@ const PorqueNosEscolher = () => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero6} alt="Número 6" />
+                <img className="number" src={numero6} alt="Número 6" loading="lazy" decoding="async" />
                 <h2>Estoque e reposição constante</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Reposição confiável para revenda.</h4>
@@ -148,17 +148,17 @@ const PorqueNosEscolher = () => (
                 falta de estoque.
               </p>
             </PorqueNosEscolherContent>
-            <img src={estoque} alt="Mascote estoque" />
+            <img src={estoque} alt="Mascote estoque" loading="lazy" decoding="async" />
           </PorqueNosEscolherCard>
         )}
       </ScrollReveal>
       <ScrollReveal variant="left">
         {({ revealProps, revealRef }) => (
           <PorqueNosEscolherCard ref={revealRef} {...revealProps}>
-            <img src={revenda} alt="Mascote revenda" />
+            <img src={revenda} alt="Mascote revenda" loading="lazy" decoding="async" />
             <PorqueNosEscolherContent>
               <PorqueNosEscolherContentTitle>
-                <img className="number" src={numero7} alt="Número 7" />
+                <img className="number" src={numero7} alt="Número 7" loading="lazy" decoding="async" />
                 <h2>Condição especial para revenda</h2>
               </PorqueNosEscolherContentTitle>
               <h4>Mais margem e melhor negociação.</h4>
@@ -187,3 +187,4 @@ const PorqueNosEscolher = () => (
 );
 
 export default PorqueNosEscolher;
+
