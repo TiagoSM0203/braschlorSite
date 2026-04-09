@@ -1,5 +1,6 @@
 import { categoriasProduto } from "./catalogo";
 import type { CategoriaProduto } from "./catalogo";
+import { formatarNomeProduto } from "./formatarNomeProduto";
 import { fragrancias } from "./fragrancias";
 import { materiasPrimas } from "./materiasPrimas";
 export type ProdutoMarketplaceNome = "shopee" | "mercadoLivre";
@@ -51,7 +52,7 @@ const criarProduto = (
   informacoes: string[] = [],
   marketplaces?: ProdutoMarketplaces,
 ): ProdutoMetadata => ({
-  nome,
+  nome: formatarNomeProduto(nome),
   categoria,
   descricao,
   destaques,
@@ -475,11 +476,11 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
   cloro: criarProduto(
     "Cloro líquido 6% Lune Blanche",
     "Linha Cloro",
-    "Cloro líquido com cloro ativo 6%, voltado para higienização de pisos, banheiros, quintais e outras áreas laváveis que exigem limpeza mais pesada.",
+    "Cloro líquido com cloro ativo 6%, voltado para higienização de pisos, banheiros, quintais e outras áreas laváveis que exigem limpeza mais pesada, disponível em embalagens de 2 L e 5 L.",
     [
       "Cloro ativo 6% para rotinas de limpeza intensa.",
+      "Disponível em embalagens de 2 L e 5 L.",
       "Apoia a remoção de sujeira, odores e limo em áreas laváveis.",
-      "Produto encontrado publicamente em embalagens de 5 L e 10 L.",
     ],
     [
       "Banheiros, pisos, quintais e áreas externas laváveis.",
@@ -1244,16 +1245,18 @@ const formatarChaveProduto = (caminhoArquivo: string) =>
     .replace(/[\u0300-\u036f]/g, "") ?? caminhoArquivo;
 
 const formatarNomePadrao = (chaveProduto: string) =>
-  chaveProduto
-    .split("-")
-    .map((parte) => {
-      if (parte.length <= 2 || /\d/.test(parte)) {
-        return parte.toUpperCase();
-      }
+  formatarNomeProduto(
+    chaveProduto
+      .split("-")
+      .map((parte) => {
+        if (parte.length <= 2 || /\d/.test(parte)) {
+          return parte.toUpperCase();
+        }
 
-      return parte.charAt(0).toUpperCase() + parte.slice(1);
-    })
-    .join(" ");
+        return parte.charAt(0).toUpperCase() + parte.slice(1);
+      })
+      .join(" "),
+  );
 
 const produtosComImagem: Produto[] = Object.entries(imagensProdutos)
   .map(([caminhoArquivo, imagem]) => {

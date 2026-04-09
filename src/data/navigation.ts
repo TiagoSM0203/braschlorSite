@@ -28,10 +28,6 @@ export const navigationLinks: NavigationLink[] = [
     {
         to: "/seja-parceiro",
         label: "Seja nosso parceiro"
-    },
-    {
-        to: `/#${homeContactSectionId}`,
-        label: "Contato"
     }
 ];
 

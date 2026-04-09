@@ -1,4 +1,5 @@
 import type { CategoriaProduto, Produto, ProdutoInfoSection } from "./produtos";
+import { formatarNomeProduto } from "./formatarNomeProduto";
 
 const categoriaMateriaPrima: CategoriaProduto = "Matérias-primas";
 
@@ -27,7 +28,7 @@ const criarMateriaPrima = ({
   cuidados = [],
 }: MateriaPrimaConfig): Produto => ({
   chave,
-  nome,
+  nome: formatarNomeProduto(nome),
   descricao,
   destaques,
   categoria: categoriaMateriaPrima,

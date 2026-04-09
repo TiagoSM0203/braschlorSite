@@ -1,4 +1,5 @@
 import type { CategoriaProduto, Produto, ProdutoInfoSection } from "./produtos";
+import { formatarNomeProduto } from "./formatarNomeProduto";
 
 const categoriaFragrancia: CategoriaProduto = "Fragrâncias";
 
@@ -25,7 +26,7 @@ const criarFragrancia = ({
   informacoes,
 }: FragranciaConfig): Produto => ({
   chave,
-  nome,
+  nome: formatarNomeProduto(nome),
   descricao,
   destaques,
   categoria: categoriaFragrancia,
