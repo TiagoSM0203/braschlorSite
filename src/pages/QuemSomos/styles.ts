@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Button } from "../../components/header/styles";
+import { Link } from "react-router-dom";
+import { Button, buttonOutlineStyles } from "../../components/header/styles";
 import { cores, TitleAndSubtitle } from "../../styles";
 import { revealStyles, type RevealMotionProps } from "../Home/scrollRevealStyles";
 
@@ -251,6 +252,10 @@ export const QuerRevenderSection = styled.div<RevealMotionProps>`
   }
 `;
 
+export const ComprarAgoraButton = styled(Link)`
+  ${buttonOutlineStyles}
+`;
+
 export const QuerRevenderButtons = styled.div`
   display: flex;
   justify-content: center;
@@ -259,36 +264,13 @@ export const QuerRevenderButtons = styled.div`
   gap: 16px;
   margin-top: 32px;
 
-  ${Button} {
-    border: 2px solid ${cores.green};
-  }
-
-  .botao {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 14px 32px;
-    border: 2px solid ${cores.green};
-    border-radius: 50px;
-    color: ${cores.green};
-    font-size: 16px;
-    font-weight: 700;
-    transition: background-color 0.2s ease, color 0.2s ease;
-
-    &:hover {
-      background-color: ${cores.green};
-      color: ${cores.white};
-    }
-  }
-
   @media (max-width: 900px) {
     width: 100%;
     max-width: 360px;
     flex-direction: column;
 
     ${Button},
-    .botao {
+    ${ComprarAgoraButton} {
       width: 100%;
     }
   }
@@ -299,7 +281,7 @@ export const QuerRevenderButtons = styled.div`
     margin-top: 24px;
 
     ${Button},
-    .botao {
+    ${ComprarAgoraButton} {
       min-height: 46px;
       padding: 12px 18px;
       font-size: 14px;

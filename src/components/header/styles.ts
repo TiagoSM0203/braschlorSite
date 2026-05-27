@@ -115,23 +115,24 @@ export const LinkItem = styled.li`
     }
 `
 
-const buttonStyles = css`
+export const buttonStyles = css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 15px 32px;
     background-color: ${cores.green};
-    border: none;
+    border: 2px solid transparent;
     border-radius: 50px;
     color: ${cores.white};
     font-weight: bold;
     font-size: 16px;
     white-space: nowrap;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     cursor: pointer;
 
     &:hover {
         background-color: ${cores.greenLight};
+        border-color: transparent;
     }
 
     @media (max-width: 1100px) {
@@ -141,6 +142,19 @@ const buttonStyles = css`
 
     @media (max-width: 1024px) {
         width: 100%;
+    }
+`
+
+export const buttonOutlineStyles = css`
+    ${buttonStyles}
+    background-color: transparent;
+    border: 2px solid ${cores.green};
+    color: ${cores.green};
+
+    &:hover {
+        background-color: ${cores.green};
+        border-color: ${cores.green};
+        color: ${cores.white};
     }
 `
 

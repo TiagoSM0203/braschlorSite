@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 import { cores } from "../../../../styles";
-import { Button } from "../../../../components/header/styles";
+import { Button, buttonOutlineStyles } from "../../../../components/header/styles";
 
 const heroReveal = keyframes`
     from {
@@ -231,6 +232,10 @@ export const HeroCard = styled.div`
     }
 `;
 
+export const ComprarAgoraButton = styled(Link)`
+    ${buttonOutlineStyles}
+`;
+
 export const ButtonDiv = styled.div`
     display: flex;
     align-items: center;
@@ -239,34 +244,13 @@ export const ButtonDiv = styled.div`
     margin-top: 36px;
     animation-delay: 4.3s;
 
-    ${Button} {
-        border: 2px solid ${cores.green};
-    }
-
-    .botao {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid ${cores.green};
-        padding: 15px 32px;
-        border-radius: 50px;
-        color: ${cores.green};
-        font-weight: bold;
-        transition: background-color 0.2s ease, color 0.2s ease;
-
-        &:hover {
-            background-color: ${cores.green};
-            color: ${cores.white};
-        }
-    }
-
     @media (max-width: 1100px) {
         margin-top: 28px;
         width: 50vw;
         display: flex;
 
         ${Button},
-        .botao {
+        ${ComprarAgoraButton} {
             width: 100%;
         }
     }
@@ -279,7 +263,7 @@ export const ButtonDiv = styled.div`
         gap: 10px;
 
         ${Button},
-        .botao {
+        ${ComprarAgoraButton} {
             width: 100%;
             min-height: 46px;
             padding: 11px 18px;
@@ -294,7 +278,7 @@ export const ButtonDiv = styled.div`
         margin-top: 12px;
 
         ${Button},
-        .botao {
+        ${ComprarAgoraButton} {
             width: 100%;
             min-height: 42px;
             padding: 10px 16px;

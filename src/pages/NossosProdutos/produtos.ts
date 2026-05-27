@@ -856,6 +856,11 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
       "Produtos sanitários em gel costumam oferecer maior controle na aplicação por escorrerem menos que versões líquidas muito finas.",
       "Use luvas, respeite o tempo de ação indicado na embalagem e enxágue conforme o modo de uso do rótulo.",
     ],
+    {
+      shopee: "https://shopee.com.br/product/1738012223/58258886836/",
+      mercadoLivre:
+        "https://www.mercadolivre.com.br/gel-sanitario-sampa-clean-12-unidades-adesivo-7g/up/MLBU3908819838?pdp_filters=item_id:MLB6623829572",
+    },
   ),
   naftalina: criarProduto(
     "Naftalina cartela Sampa Clean",
@@ -872,6 +877,8 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
     [],
     {
       shopee: "https://shopee.com.br/product/1738012223/58257018984/",
+      mercadoLivre:
+        "https://www.mercadolivre.com.br/naftalina-sampa-clean-12-unidades-evita-traca-e-mofo/p/MLB2075708334?pdp_filters=item_id:MLB6838442534",
     },
   ),
   neutro: criarProduto(
@@ -952,6 +959,12 @@ const produtosMetadata: Record<string, ProdutoMetadata> = {
       "Utensílios e superfícies compatíveis com produtos de polimento e brilho.",
       "Limpeza manual em situações que pedem acabamento visual reforçado.",
     ],
+    [],
+    {
+      shopee: "https://shopee.com.br/product/1738012223/58258886360/",
+      mercadoLivre:
+        "https://www.mercadolivre.com.br/sabao-em-pasta-brilho-fab-limp-500g-desengordurante/up/MLBU3908895132?pdp_filters=item_id:MLB4609350317",
+    },
   ),
   "cera-branca-base": criarProdutoBaseConcentrado(
     "Cera branca base 2/20",

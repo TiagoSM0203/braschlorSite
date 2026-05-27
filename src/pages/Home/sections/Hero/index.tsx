@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Container } from "../../../../styles";
 import heroDesktopVideo from "../../../../assets/imgs/hero-desktop.mp4";
 import heroMobileImage from "../../../../assets/imgs/hero-mobile.webp";
 import {
   ButtonDiv,
+  ComprarAgoraButton,
   HeroBackgroundImage,
   DesktopHeroVideo,
   HeroCard,
@@ -66,7 +66,7 @@ const Hero = () => {
             </p>
             <ButtonDiv>
               <Button href="https://wa.me/5511993521508" target="_blank">Quero revender</Button>
-              <Link className="botao" to="/nossos-produtos">Comprar agora</Link>
+              <ComprarAgoraButton to="/nossos-produtos">Comprar agora</ComprarAgoraButton>
             </ButtonDiv>
           </HeroCard>
         </Container>
@@ -76,4 +76,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

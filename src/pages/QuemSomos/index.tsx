@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaRegEnvelope } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import marcas from "../../assets/imgs/mascote-marcas.webp";
 import nossaHistoria from "../../assets/imgs/nossa-historia.webp";
 import qualidade from "../../assets/imgs/mascote-qualidade.webp";
@@ -10,6 +9,7 @@ import { Container, TitleAndSubtitle } from "../../styles";
 import { AvaliacaoSection } from "../Home/sections/Avaliacao/styles";
 import ScrollReveal from "../Home/scrollReveal";
 import {
+  ComprarAgoraButton,
   EmailDiv,
   MascasContent,
   MascasSection,
@@ -135,9 +135,9 @@ const QuemSomosPage = () => {
               <p className="texto">{resellerText}</p>
               <QuerRevenderButtons>
                 <Button href="https://wa.me/5511993521508" target="_blank">Quero revender</Button>
-                <Link className="botao" to="/nossos-produtos">
+                <ComprarAgoraButton to="/nossos-produtos">
                   Comprar agora
-                </Link>
+                </ComprarAgoraButton>
               </QuerRevenderButtons>
               <EmailDiv>
                 <FaRegEnvelope />
@@ -152,4 +152,3 @@ const QuemSomosPage = () => {
 };
 
 export default QuemSomosPage;
-
