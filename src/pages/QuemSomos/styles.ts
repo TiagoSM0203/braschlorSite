@@ -288,34 +288,3 @@ export const QuerRevenderButtons = styled.div`
     }
   }
 `;
-
-export const EmailDiv = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
-
-  svg {
-    width: 24px;
-    height: 24px;
-    display: block;
-  }
-
-  p {
-    font-size: clamp(18px, 2vw, 24px);
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  @media (max-width: 640px) {
-    gap: 8px;
-
-    p {
-      font-size: 17px;
-      overflow-wrap: anywhere;
-    }
-  }
-`;

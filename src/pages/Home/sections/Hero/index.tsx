@@ -1,59 +1,29 @@
-import { useEffect, useState } from "react";
 import { Container } from "../../../../styles";
-import heroDesktopVideo from "../../../../assets/imgs/hero-desktop.mp4";
+import heroDesktopImage from "../../../../assets/imgs/hero2.webp";
 import heroMobileImage from "../../../../assets/imgs/hero-mobile.webp";
 import {
   ButtonDiv,
   ComprarAgoraButton,
   HeroBackgroundImage,
-  DesktopHeroVideo,
+  HeroBackgroundPicture,
   HeroCard,
   HeroContent,
   HeroSection,
 } from "./styles";
 import { Button } from "../../../../components/header/styles";
 
-const HERO_DESKTOP_MEDIA_QUERY = "(min-width: 1101px)";
-
-const Hero = () => {
-  const [isDesktopViewport, setIsDesktopViewport] = useState(
-    () => window.matchMedia(HERO_DESKTOP_MEDIA_QUERY).matches,
-  );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(HERO_DESKTOP_MEDIA_QUERY);
-    const handleViewportChange = (event: MediaQueryListEvent) => {
-      setIsDesktopViewport(event.matches);
-    };
-
-    setIsDesktopViewport(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return () => mediaQuery.removeEventListener("change", handleViewportChange);
-  }, []);
-
-  return (
+const Hero = () => (
     <HeroSection>
-      {isDesktopViewport ? (
-        <DesktopHeroVideo
-          autoPlay
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-        >
-          <source src={heroDesktopVideo} type="video/mp4" />
-        </DesktopHeroVideo>
-      ) : (
+      <HeroBackgroundPicture aria-hidden="true">
+        <source srcSet={heroDesktopImage} media="(min-width: 1101px)" />
         <HeroBackgroundImage
           src={heroMobileImage}
           alt=""
-          aria-hidden="true"
           loading="eager"
           decoding="async"
           fetchPriority="high"
         />
-      )}
+      </HeroBackgroundPicture>
       <HeroContent>
         <Container>
           <HeroCard>
@@ -73,6 +43,5 @@ const Hero = () => {
       </HeroContent>
     </HeroSection>
   );
-};
 
 export default Hero;

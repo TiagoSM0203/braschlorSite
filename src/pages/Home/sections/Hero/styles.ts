@@ -42,25 +42,16 @@ const HeroBackgroundMedia = `
     z-index: 0;
 `;
 
-const HeroBackgroundVideo = styled.video`
+export const HeroBackgroundPicture = styled.picture`
     ${HeroBackgroundMedia}
 `;
 
 export const HeroBackgroundImage = styled.img`
-    ${HeroBackgroundMedia}
-`;
-
-export const DesktopHeroVideo = styled(HeroBackgroundVideo)`
-    display: block;
-`;
-
-export const MobileHeroVideo = styled(HeroBackgroundVideo)`
-    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center center;
-
-    @media (max-width: 900px) {
-        display: block;
-    }
+    display: block;
 `;
 
 export const HeroContent = styled.div`
@@ -112,14 +103,6 @@ export const HeroCard = styled.div`
         opacity: 0;
         animation: ${heroReveal} 0.75s ease-out forwards;
         will-change: opacity, transform;
-    }
-
-    h1 {
-        animation-delay: 4s;
-    }
-
-    p {
-        animation-delay: 4.15s;
     }
 
     h1 {
@@ -242,7 +225,6 @@ export const ButtonDiv = styled.div`
     flex-wrap: wrap;
     gap: 16px;
     margin-top: 36px;
-    animation-delay: 4.3s;
 
     @media (max-width: 1100px) {
         margin-top: 28px;

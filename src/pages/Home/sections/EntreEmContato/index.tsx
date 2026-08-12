@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import { homeContactSectionId } from "../../../../data/navigation";
 import { Container } from "../../../../styles";
 import ScrollReveal from "../../scrollReveal";
@@ -10,6 +11,7 @@ import {
     FaleConoscoColuna,
     FaleConosco,
     FaleConoscoForm,
+    FaleConoscoPrivacy,
     FaleConoscoStatus,
     NomeSobrenome,
     PerguntaBotao,
@@ -152,6 +154,13 @@ const EntreEmContato = () => {
                                     <input type="tel" name="telefone" id="telefone" />
                                     <label htmlFor="mensagem">Mensagem</label>
                                     <textarea name="mensagem" id="mensagem" required></textarea>
+                                    <FaleConoscoPrivacy>
+                                        Ao enviar, você concorda com a nossa{" "}
+                                        <Link to="/politica-de-privacidade">
+                                            Política de Privacidade
+                                        </Link>
+                                        .
+                                    </FaleConoscoPrivacy>
                                     <FaleConoscoActions>
                                         <FaleConoscoButton type="submit" disabled={formStatus === "loading"}>
                                             {formStatus === "loading" ? "Enviando..." : "Enviar mensagem"}

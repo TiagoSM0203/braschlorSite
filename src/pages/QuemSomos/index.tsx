@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaRegEnvelope } from "react-icons/fa6";
 import marcas from "../../assets/imgs/mascote-marcas.webp";
 import nossaHistoria from "../../assets/imgs/nossa-historia.webp";
 import qualidade from "../../assets/imgs/mascote-qualidade.webp";
@@ -10,7 +9,6 @@ import { AvaliacaoSection } from "../Home/sections/Avaliacao/styles";
 import ScrollReveal from "../Home/scrollReveal";
 import {
   ComprarAgoraButton,
-  EmailDiv,
   MascasContent,
   MascasSection,
   NossaHistoriaContent,
@@ -139,10 +137,6 @@ const QuemSomosPage = () => {
                   Comprar agora
                 </ComprarAgoraButton>
               </QuerRevenderButtons>
-              <EmailDiv>
-                <FaRegEnvelope />
-                <p>vendas@braschlor.com.br</p>
-              </EmailDiv>
             </QuerRevenderSection>
           )}
         </ScrollReveal>

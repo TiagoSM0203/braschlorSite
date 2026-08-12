@@ -7,6 +7,7 @@ const QuemSomosPage = lazy(() => import("./pages/QuemSomos"));
 const NossosProdutosPage = lazy(() => import("./pages/NossosProdutos"));
 const ProdutoDetalhePage = lazy(() => import("./pages/NossosProdutos/ProdutoDetalhe"));
 const SejaParceiroPage = lazy(() => import("./pages/SejaParceiro"));
+const PoliticaPrivacidadePage = lazy(() => import("./pages/PoliticaPrivacidade"));
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/nossos-produtos" element={<NossosProdutosPage />} />
           <Route path="/nossos-produtos/:produtoId" element={<ProdutoDetalhePage />} />
           <Route path="/seja-parceiro" element={<SejaParceiroPage />} />
+          <Route path="/politica-de-privacidade" element={<PoliticaPrivacidadePage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

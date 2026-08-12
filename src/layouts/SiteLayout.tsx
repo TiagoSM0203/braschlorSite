@@ -10,6 +10,10 @@ import { Container, GlobalCss } from "../styles";
 const heroGradient =
   "radial-gradient(circle, rgba(42, 71, 177, 1) 0%, rgba(0, 24, 114, 1) 100%)";
 
+const internalPageTitles: Record<string, string> = {
+  "/politica-de-privacidade": "Política de Privacidade",
+};
+
 const HeaderLayer = styled.div<{ $isOverlay: boolean; $useGradientBackground: boolean }>`
   position: ${({ $isOverlay }) => ($isOverlay ? "absolute" : "relative")};
   top: 0;
@@ -32,7 +36,7 @@ const SiteLayout = () => {
   const currentInternalPage = navigationLinks.find(({ to }) => to !== "/" && to === location.pathname);
   const produtoPathPrefix = "/nossos-produtos/";
   const isProdutoDetalheRoute = location.pathname.startsWith(produtoPathPrefix);
-  const heroTitle = currentInternalPage?.label;
+  const heroTitle = currentInternalPage?.label ?? internalPageTitles[location.pathname];
   const shouldShowHero = Boolean(heroTitle) && !isProdutoDetalheRoute;
 
   useEffect(() => {

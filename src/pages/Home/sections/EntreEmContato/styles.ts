@@ -136,6 +136,20 @@ export const FaleConoscoActions = styled.div`
     margin-top: 8px;
 `
 
+export const FaleConoscoPrivacy = styled.p`
+    margin: 2px 0 0;
+    color: ${cores.gray};
+    font-size: 13px;
+    line-height: 1.5;
+
+    a {
+        color: ${cores.blueDark};
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+`
+
 export const FaleConoscoButton = styled.button`
     min-height: 52px;
     border: none;

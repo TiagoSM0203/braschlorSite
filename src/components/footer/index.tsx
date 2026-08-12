@@ -62,13 +62,17 @@ const quickLinks: QuickLink[] = [
         external: true
     },
     {
-        label: "Seja revendedor",
+        label: "Seja nosso parceiro",
         to: "/seja-parceiro"
     },
     {
         label: "Contato",
         href: "https://wa.me/5511993521508",
         external: true
+    },
+    {
+        label: "Política de Privacidade",
+        to: "/politica-de-privacidade"
     }
 ];
 
@@ -83,6 +87,13 @@ const socialItems = [
         label: "Facebook",
         href: "https://www.facebook.com/Braschlor.Aromaty/"
     }
+];
+
+const contactEmails = [
+    "vendas@braschlor.com.br",
+    "vendas1@braschlor.com.br",
+    "vendas2@braschlor.com.br",
+    "compras@braschlor.com.br"
 ];
 
 const Footer = () => (
@@ -139,14 +150,16 @@ const Footer = () => (
                                     (11) 99352-1508
                                 </ContactLink>
                             </ContactItem>
-                            <ContactItem>
-                                <ContactIconBox>
-                                    <FaRegEnvelope />
-                                </ContactIconBox>
-                                <ContactLink href="mailto:vendas@braschlor.com.br">
-                                    vendas@braschlor.com.br
-                                </ContactLink>
-                            </ContactItem>
+                            {contactEmails.map((email) => (
+                                <ContactItem key={email}>
+                                    <ContactIconBox>
+                                        <FaRegEnvelope />
+                                    </ContactIconBox>
+                                    <ContactLink href={`mailto:${email}`}>
+                                        {email}
+                                    </ContactLink>
+                                </ContactItem>
+                            ))}
                             <ContactItem>
                                 <ContactIconBox>
                                     <FaLocationDot />
@@ -173,4 +186,3 @@ const Footer = () => (
 );
 
 export default Footer;
-
